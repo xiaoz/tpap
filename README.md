@@ -15,6 +15,7 @@ kissy for caja, a third parth adapter.
 https://github.com/lorrylockie/caja-kissy/issues
 
 
+
 #### 有问题
 
 欢迎[提issue](https://github.com/lorrylockie/caja/issues/new)， 我会第一时间回复
@@ -22,6 +23,7 @@ https://github.com/lorrylockie/caja-kissy/issues
 #### WIKI
 
 也欢迎你贡献 [wiki](https://github.com/lorrylockie/caja-kissy/wiki)
+
 
 #### 目录结构说明
 * assets 前端源代码
@@ -35,4 +37,5 @@ https://github.com/lorrylockie/caja-kissy/issues
 * testcase common 为基础的页头页尾，每个测试用例需要引入common中的head和foot文件作为基础环境，并且调用cajoled_service.php 作为js的编译服务。
 * testcase 1.3.0/gallery/thirdparty 基本和assets/openjs 目录对应
 * test 测试代码库，目前里面只有一个js，提供一个很简单的类似于jasmine的api
+
 
