@@ -42,6 +42,10 @@ KISSY.add(function (S) {
                         var param = S.makeArray(arguments);
                         if(param.length>3){
                             param[2] = cajaAFTB.untame(param[2]);
+                            var fnc = param[3] ;
+                            param[3] = frameGroup.markFunction(function(e){
+                                fnc.call(window.TOP,e);
+                            });
                         }else{
                             param[0] = cajaAFTB.untame(param[0]);
                         }

@@ -1,6 +1,6 @@
 <!--页头公共资源引入-->
 <? include("../common/head.php");?>
-<script type="text/javascript" src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey=xxxxx"></script>
+<script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey=12262395"></script>
 
 
 <!--
@@ -8,7 +8,15 @@
     用户的javascript理论上只可以作用到这个dom下面，不可以"越界"
 -->
 <div id="dom-test" data-componentid="uniqueSign" class="J_TScriptedModule">
-    <div class="top-authbtn-container top-login-btn-container"></div>
+    <div class="taeapp_im_auth"></div>
+    <br/>
+    <button class="taeapp_im_dox" style="cursor:pointer;">点我收藏</button>
+
+    <br/><br/>日志：<br/>
+
+    <div class="taeapp_im_ssx" style="white-space:nowrap;font-size:14px;font-family:tahoma,courier new,courier,monospace,verdana,tahoma,arial;overflow:hidden;">
+
+    </div>
 
 </div>
 

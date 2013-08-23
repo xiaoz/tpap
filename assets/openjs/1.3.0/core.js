@@ -92,7 +92,7 @@ KISSY.add(function (S, Calendar) {
          * @param context 上下文
          * @param context.mod 沙箱的模块范围，所有操作必须限定到模块范围之内去执行
          * @param context.frame 单个模块的沙箱
-         * @return {Object} 实际的组件对象
+         * @return {Object} 实Fs际的组件对象
          */
         return function (param) {
 
