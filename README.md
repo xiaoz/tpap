@@ -39,3 +39,6 @@ https://github.com/lorrylockie/caja-kissy/issues
 * test 测试代码库，目前里面只有一个js，提供一个很简单的类似于jasmine的api
 
 
+#### 代码运行
+* 将项目目录，放到php 服务器中，访问index.php
+* 编写完适配代码，`grunt`, 项目打包
