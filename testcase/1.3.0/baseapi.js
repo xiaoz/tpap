@@ -1,261 +1,3 @@
-describe('基本的语言测试', function () {
-
-    it("数组的一些函数测试", function () {
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        var arr2 = [10, 11];
-
-        expect('arr.length == 9', arr.length == 9, 1);
-        expect('合并数组 调用 concat 函数产生一个新的合并后的函数 : ', arr.concat(arr2).length == 11 && arr.length == 9, 2);
-        expect('转化为字符串 ，调用 join 将数组中的元素以分隔符合并为一个字符串 ', arr2.join(":") === "10:11", 3);
-        expect('pop 弹出', arr.pop() && arr.length == 8, 4);
-
-        var arr = [1, 2, 3];
-        arr.forEach(function (i) {
-            arr.push(i)
-        })
-        expect('forEach', arr[3] === 1 && arr[4] === 2 && arr[5] === 3, 5);
-
-        var arr = [1, 2, 3];
-        arr.reverse();
-        expect('revserse 倒转数组元素', arr.length == 3 && arr[0] === 3 && arr[1] === 2 && arr[2] === 1, 6);
-        expect('shift 弹出数组的第一个元素', arr.shift() == 3 && arr.length == 2 && arr[0] === 2 && arr[1] === 1, 7);
-
-        var arr = [1, 2, 3];
-        arr.unshift(4);
-        expect('unshift 添加新元素到数组头部', arr.length == 4 && arr[0] === 4 && arr[1] === 1, 8);
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        var arrsub = arr.slice(3, 6);
-        var arract = [9, 8, 7];
-        expect('slice 返回数组指定索引为3到5的字符，索引从0开始', arrsub.length == 3 && arract.toString() == arrsub.toString(), 9);
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        var arrreplace = arr.splice(2, 4, 1, 1, 1, 1);
-        var arr1 = [3, 9, 8, 7]
-        var arrexp = [1, 2, 1, 1, 1, 1, 6, 5, 4];
-        expect('splice 指定索引2后面的4个元素被1，1,1,1替代', arr.toString() == arrexp.toString() && arrreplace.toString() == arr1.toString(), 10);
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        arr.sort();
-        var arrupexp = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        expect('sort 升序排序', arr.toString() == arrupexp.toString(), 11)
-        arr.sort(function (a, b) {
-            return b - a;
-        });
-        var arrdownexp = [9, 8, 7, 6, 5, 4, 3, 2, 1];
-        expect('sort 降序排序', arr.toString() == arrdownexp.toString(), 12);
-
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        var dex = arr.indexOf(4)
-        expect('index 找到值为参数的索引', dex == 8, 13);
-
-        var arr = [4, 6, 7, 8, 2, 66, 34, 7, 534, 34, 6, 8];
-        var lastdex = arr.lastIndexOf(4);
-        expect('lastIndexOf 找到该值最后出现的索引位置', lastdex == 0, 14);
-
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-
-        var flag1 = arr.every(function (a) {
-            if (a === 9) {
-                return false;
-            }
-        });
-        expect('every 只要有一个元素调用function返回false则every返回false', flag1 == false, 15);
-
-
-        var flag2 = arr.every(function (a) {
-            if (a !== 100) {
-                return true;
-            }
-        });
-        expect('every 每个元素调用function返回true则every返回true', flag2 == true, 16);
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        var flag1 = arr.some(function (a) {
-            if (a === 9) {
-                return true;
-            }
-        });
-        expect('some 只要有一个元素调用function返回ture则some返回true', flag1 == true, 17);
-
-
-        var flag2 = arr.some(function (a) {
-            if (a === 100) {
-                return false;
-            }
-        });
-        expect('some 所有元素调用funtion返回false则some返回flase', flag2 == false, 18);
-
-        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
-        var arrfilter = arr.filter(function (a) {
-            if (a !== 1) {
-                return true;
-            }
-        });
-        expect('filter 返回function返回值为true的元素', arrfilter.length == 8 && arrfilter[0] === 2, 19);
-
-        var arr = [1, 2, 3];
-        var empty = [];
-        arr.map(function (item, index) {
-            empty[index] = item;
-        });
-        expect('arr map', empty[0] === 1 && arr[2] === 3, 20);
-    });
-
-    it("all 方法相关：链式用法", function () {
-        var S = KISSY;
-
-        var obj = S.all('a');
-        console.log(obj);
-        expect('KISSY.all 获得一个对象', typeof obj == "object", 1);
-
-        expect('KISSY.all length 获取长度，注意，这里是函数', S.all('.dom-father').len() === 1, 1)
-
-        expect('KISSY.all equals 比较当前节点列表和 others 代表的节点列表是否完全相同', S.all('a').equals(S.all('a')), 1);
-
-        expect('KISSY.all hasClass 是否包含指定class', S.all('.dom-father').hasClass('.dom-father'), 1);
-
-        expect('KISSY.all c_addClass 添加class', S.all('.dom-father').c_addClass('bbb').hasClass('bbb'), 1);
-
-        expect('KISSY.all removeClass 移除class', !S.all('.dom-father').c_addClass('bbb').removeClass('bbb').hasClass('bbb'), 1);
-
-        expect('KISSY.all toggleClass 切换class', !S.all('.dom-father').c_addClass('bbb').toggleClass('bbb').hasClass('bbb'), 1);
-
-        expect('KISSY.all replaceClass 切换class', S.all('.dom-father').c_addClass('bbb').replaceClass('bbb', 'aaa').hasClass('aaa') && !S.all('.dom-father').hasClass('bbb'), 1);
-
-        expect('KISSY.all add方法增加的元素必须是caja容器内的元素', S.all('.row').c_getDOMNodes().length === 0, 1);
-
-
-        expect('KISSY.all slice 获取包含当前节点列表选定范围内原生节点的新 NodeList 对象',
-            S.all('.dom-child1').c_add('.dom-child2').slice(1, 2).equals(S.all('.dom-child2')), 1);
-
-
-        expect('KISSY.all end 得到上一次 NodeList.prototype.one() / NodeList.prototype.all() 操作前的 NodeList 对象',
-            S.all('.dom-child1').all('.dom-child2').end().equals(S.all('.dom-child1')), 1);
-
-        expect('KISSY.all add和item 返回包含合并选择器字符串匹配的元素和当前节点列表元素的新 NodeList 对象， item获取第index个NodeList对象', S.all('.dom-child1').c_add('.dom-child2').item(1).hasClass('dom-child2'), 1);
-
-        expect('KISSY.all scrollTop ', typeof S.all('.dom-child1').scrollTop() === "number", 1);
-        expect('KISSY.all scrollLeft' + S.all('.dom-child1').scrollLeft(), typeof S.all('.dom-child1').scrollLeft() === "number", 1);
-
-        expect('KISSY.all height ' + S.all('.dom-father').height(), typeof S.all('.dom-father').height() === "number", 1);
-        expect('KISSY.all width' + S.all('.dom-father').width(), typeof S.all('.dom-father').width() === "number", 1);
-
-        expect('KISSY.all c_appendTo/parent/c_children/item 将当前节点列表中的每个元素插入到容器列表的每个元素的最后一个子节点后面.',
-            S.all('.dom-child1').c_appendTo(S.all('.dom-father')).parent().c_children().item(0).hasClass("dom-child2"), 1);
-
-        expect('KISSY.all c_prependTo 将当前节点列表中的每个元素插入到容器列表的每个元素的开头.', S.all('.dom-child1').c_prependTo(S.all('.dom-father')).parent().c_children().item(0).hasClass("dom-child1"), 1);
-
-//        S.all('.dom-child1').c_insertBefore(S.all('.dom-child2'));
-//        expect('KISSY.all c_insertBefore 将当前节点列表中的每个元素插入到容器列表的每个元素的开头.', S.all('.dom-father').c_children().item(0).hasClass('dom-child1'), 1);
-
-        S.all('.dom-father').show(5).hide(5).toggle(5).fadeIn().fadeOut().fadeToggle().slideDown().slideUp().slideToggle();
-        expect('KISSY.all show .', true, 1);
-        expect('KISSY.all hide .', true, 1);
-        expect('KISSY.all toggle .', true, 1);
-
-        expect('KISSY.all c_filter 获取符合选择器以及过滤参数的所有元素.', S.all('.dom-father').c_children().c_filter('.dom-child2').equals(S.all('.dom-child2')), 1);
-
-
-        expect('KISSY.all test 判断根据选择器获取的所有元素是否都符合过滤条件.', S.all('.dom-father').c_children().test('div'), 1);
-
-        S.all('.dom-child1').clone().c_insertBefore(S.all('.dom-child2'));
-        expect('KISSY.all clone 获取符合选择器的第一个元素的克隆元素.', S.all('.dom-father').c_children().item(1).hasClass('dom-child1'), 1);
-
-        S.all('.dom-child1').item(0).remove();
-        expect('KISSY.all remove 将符合选择器的所有元素从 DOM 中移除.', S.all('.dom-father').c_children().item(1).hasClass('dom-child2'), 1);
-
-        var div = document.createElement('div');
-        div.innerHTML = "<a class='a'>a</a><a class='b'>b</a>";
-        div.className = "dom-child3";
-        S.all(div).c_appendTo(S.all('.dom-father'));
-
-
-        expect('KISSY.all empty 清除节点的所有子孙节点以及子孙节点上的事件', S.all('.dom-father').c_children().item(2).hasClass('dom-child3'), 1);
-        S.all('.dom-father').c_children().item(2).empty();
-        expect('KISSY.all empty 清除节点的所有子孙节点以及子孙节点上的事件', document.getElementsByClassName('dom-child3')[0].innerHTML === '', 1);
-        S.all('.dom-child3').remove();
-
-        div = document.createElement("a");
-        div.className = 'temp';
-        expect('KISSY.all replaceWith 将 node 节点（数组）替换为新的节点（数组） newNode',
-            S.all('.dom-child1').replaceWith(div) && S.all('.temp').hasClass('temp'), 1);
-
-        div = document.createElement("div");
-        div.className = 'dom-child1';
-        document.getElementsByClassName('dom-father')[0].appendChild(div);
-
-        S.all('.temp').remove();
-
-
-        expect('KISSY.all offset 获取符合选择器的第一个元素相对页面文档左上角的偏移值', typeof S.all('.dom-father').offset().top, 1);
-        expect('KISSY.all offset 获取符合选择器的第一个元素相对页面文档左上角的偏移值', typeof S.all('.dom-father').offset().left, 1);
-
-        expect('KISSY.all c_next 获取符合选择器的第一个元素的下一个同级节点', S.all('.dom-child2').c_next().equals(S.all('.dom-child1')), 1)
-        expect('KISSY.all c_prev 获取符合选择器的第一个元素的上一个同级节点', S.all('.dom-child1 ').c_prev().equals(S.all('.dom-child2')), 1)
-
-        expect('KISSY.all c_first 获取符合选择器的第一个孩子节点', S.all('.dom-father').c_first().equals(S.all('.dom-child2')), 1)
-
-        expect('KISSY.all c_last 获取符合选择器的最后一个孩子节点', S.all('.dom-father').c_last().equals(S.all('.dom-child1')), 1)
-
-        expect('KISSY.all c_siblings 获取符合选择器的第一个元素的相应同级节点.', S.all('.dom-father').c_children().item(0).c_add(S.all('.dom-father').c_children().item(0).c_siblings()).equals(S.all('.dom-father').c_children()), 1)
-
-        expect('KISSY.all contains 判断某一容器(container)是否包含另一(contained)节点', S.all('.dom-father').contains(S.all('.dom-child1')), 1)
-
-        expect('KISSY.all innerWidth 获取符合选择器的第一个元素的宽度值, 注意: 该值包含 padding .', typeof S.all('.dom-father').innerWidth() === 'number', 1)
-        expect('KISSY.all innerHeight 获取符合选择器的第一个元素的高度值, 注意: 该值包含 padding . .', typeof S.all('.dom-father').innerHeight() === 'number', 1)
-        expect('KISSY.all outerWidth 获取符合选择器的第一个元素的宽度值, 注意: 该值除了包含元素本身宽度和 padding 外, 还包含 border或margin .', typeof S.all('.dom-father').outerWidth() === 'number', 1)
-        expect('KISSY.all outerHeight 获取符合选择器的第一个元素的高度值, 注意: 该值除了包含元素本身宽度和 padding 外, 还包含 border或margin .', typeof S.all('.dom-father').outerHeight() === 'number', 1)
-
-
-        var an = S.all('.dom-child2').c_animate({"top": 100});
-        an.pause();
-        expect('KISSY.all animate/isPaused ', an.isPaused(), 1);
-        an.resume();
-        expect('KISSY.all animate/isPaused ', an.isRunning(), 1);
-        an.stop();
-        expect('KISSY.all animate/stop ', true, 1);
-
-
-        S.all('.dom-child1').c_on('click', function (e) {
-            e.target.innerHTML = "fffffff"
-        });
-        S.all('.dom-child1').fire('click');
-
-        expect('KISSY.all fire js手动触发事件', S.all('.dom-child1').c_getDOMNodes()[0].innerHTML === "fffffff", 1);
-
-        expect('KISSY.all scrollIntoView 目测ok了', true, 1);
-
-        S.all('.inputcls').c_on('click',function (e) {
-            expect("kissy.al on fire 可以获取争取的值 e.target.value", e.target.value === 'landao');
-            expect("kissy.al on fire 可以获取争取的值 this.value", this.value === 'landao');
-            expect("kissy.al on fire 可以获取争取的值 S.all(this).val()", S.all(this).val() === 'landao');
-
-        }).fire('click');
-
-    });
-
-    it('S.all 方法链式写法的安全性校验', function () {
-
-        var S = KISSY;
-
-        expect('KISSY.all add方法增加的元素必须是caja容器内的元素', S.all('.dom-child1').c_add('.row').c_getDOMNodes().length === 1, 1);
-        expect('KISSY.all c_prependTo/c_appendTo 方法增加的元素必须是caja容器内的元素', S.all('.dom-child1').c_add('.row').c_getDOMNodes().length === 1, 1);
-
-
-        var el = S.all('.dom-child1').parent(5);
-
-        expect('KISSY.all parent不可以获取到超过容器外的元素', el.c_getDOMNodes()[0].tagName === undefined);
-
-        setTimeout(function () {
-            S.all('.rep-father').scrollIntoView();
-        }, 3000);
-
-    });
-
-})
 describe('对象基本方法和字符串测试', function () {
 
     it('对象的属性和函数测试', function () {
@@ -491,3 +233,262 @@ describe('对象基本方法和字符串测试', function () {
 
     });
 });
+
+describe('基本的语言测试', function () {
+
+    it("数组的一些函数测试", function () {
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        var arr2 = [10, 11];
+
+        expect('arr.length == 9', arr.length == 9, 1);
+        expect('合并数组 调用 concat 函数产生一个新的合并后的函数 : ', arr.concat(arr2).length == 11 && arr.length == 9, 2);
+        expect('转化为字符串 ，调用 join 将数组中的元素以分隔符合并为一个字符串 ', arr2.join(":") === "10:11", 3);
+        expect('pop 弹出', arr.pop() && arr.length == 8, 4);
+
+        var arr = [1, 2, 3];
+        arr.forEach(function (i) {
+            arr.push(i)
+        })
+        expect('forEach', arr[3] === 1 && arr[4] === 2 && arr[5] === 3, 5);
+
+        var arr = [1, 2, 3];
+        arr.reverse();
+        expect('revserse 倒转数组元素', arr.length == 3 && arr[0] === 3 && arr[1] === 2 && arr[2] === 1, 6);
+        expect('shift 弹出数组的第一个元素', arr.shift() == 3 && arr.length == 2 && arr[0] === 2 && arr[1] === 1, 7);
+
+        var arr = [1, 2, 3];
+        arr.unshift(4);
+        expect('unshift 添加新元素到数组头部', arr.length == 4 && arr[0] === 4 && arr[1] === 1, 8);
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        var arrsub = arr.slice(3, 6);
+        var arract = [9, 8, 7];
+        expect('slice 返回数组指定索引为3到5的字符，索引从0开始', arrsub.length == 3 && arract.toString() == arrsub.toString(), 9);
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        var arrreplace = arr.splice(2, 4, 1, 1, 1, 1);
+        var arr1 = [3, 9, 8, 7]
+        var arrexp = [1, 2, 1, 1, 1, 1, 6, 5, 4];
+        expect('splice 指定索引2后面的4个元素被1，1,1,1替代', arr.toString() == arrexp.toString() && arrreplace.toString() == arr1.toString(), 10);
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        arr.sort();
+        var arrupexp = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        expect('sort 升序排序', arr.toString() == arrupexp.toString(), 11)
+        arr.sort(function (a, b) {
+            return b - a;
+        });
+        var arrdownexp = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+        expect('sort 降序排序', arr.toString() == arrdownexp.toString(), 12);
+
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        var dex = arr.indexOf(4)
+        expect('index 找到值为参数的索引', dex == 8, 13);
+
+        var arr = [4, 6, 7, 8, 2, 66, 34, 7, 534, 34, 6, 8];
+        var lastdex = arr.lastIndexOf(4);
+        expect('lastIndexOf 找到该值最后出现的索引位置', lastdex == 0, 14);
+
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+
+        var flag1 = arr.every(function (a) {
+            if (a === 9) {
+                return false;
+            }
+        });
+        expect('every 只要有一个元素调用function返回false则every返回false', flag1 == false, 15);
+
+
+        var flag2 = arr.every(function (a) {
+            if (a !== 100) {
+                return true;
+            }
+        });
+        expect('every 每个元素调用function返回true则every返回true', flag2 == true, 16);
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        var flag1 = arr.some(function (a) {
+            if (a === 9) {
+                return true;
+            }
+        });
+        expect('some 只要有一个元素调用function返回ture则some返回true', flag1 == true, 17);
+
+
+        var flag2 = arr.some(function (a) {
+            if (a === 100) {
+                return false;
+            }
+        });
+        expect('some 所有元素调用funtion返回false则some返回flase', flag2 == false, 18);
+
+        var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
+        var arrfilter = arr.filter(function (a) {
+            if (a !== 1) {
+                return true;
+            }
+        });
+        expect('filter 返回function返回值为true的元素', arrfilter.length == 8 && arrfilter[0] === 2, 19);
+
+        var arr = [1, 2, 3];
+        var empty = [];
+        arr.map(function (item, index) {
+            empty[index] = item;
+        });
+        expect('arr map', empty[0] === 1 && arr[2] === 3, 20);
+    });
+
+    it("kissy all 方法相关：链式用法", function () {
+        var S = KISSY;
+
+        var obj = S.all('a');
+        console.log(obj);
+        expect('KISSY.all 获得一个对象', typeof obj == "object", 1);
+
+        expect('KISSY.all length 获取长度，注意，这里是函数', S.all('.dom-father').len() === 1, 1)
+
+        expect('KISSY.all equals 比较当前节点列表和 others 代表的节点列表是否完全相同', S.all('a').equals(S.all('a')), 1);
+
+        expect('KISSY.all hasClass 是否包含指定class', S.all('.dom-father').hasClass('.dom-father'), 1);
+
+        expect('KISSY.all addClass 添加class', S.all('.dom-father').addClass('bbb').hasClass('bbb'), 1);
+
+        expect('KISSY.all removeClass 移除class', !S.all('.dom-father').addClass('bbb').removeClass('bbb').hasClass('bbb'), 1);
+
+        expect('KISSY.all toggleClass 切换class', !S.all('.dom-father').addClass('bbb').toggleClass('bbb').hasClass('bbb'), 1);
+
+        expect('KISSY.all replaceClass 切换class', S.all('.dom-father').addClass('bbb').replaceClass('bbb', 'aaa').hasClass('aaa') && !S.all('.dom-father').hasClass('bbb'), 1);
+
+        expect('KISSY.all add方法增加的元素必须是caja容器内的元素', S.all('.row').getDOMNodes().length === 0, 1);
+
+
+        expect('KISSY.all slice 获取包含当前节点列表选定范围内原生节点的新 NodeList 对象',
+            S.all('.dom-child1').add('.dom-child2').slice(1, 2).equals(S.all('.dom-child2')), 1);
+
+
+        expect('KISSY.all end 得到上一次 NodeList.prototype.one() / NodeList.prototype.all() 操作前的 NodeList 对象',
+            S.all('.dom-child1').all('.dom-child2').end().equals(S.all('.dom-child1')), 1);
+
+        expect('KISSY.all add和item 返回包含合并选择器字符串匹配的元素和当前节点列表元素的新 NodeList 对象， item获取第index个NodeList对象', S.all('.dom-child1').add('.dom-child2').item(1).hasClass('dom-child2'), 1);
+
+        expect('KISSY.all scrollTop ', typeof S.all('.dom-child1').scrollTop() === "number", 1);
+        expect('KISSY.all scrollLeft' + S.all('.dom-child1').scrollLeft(), typeof S.all('.dom-child1').scrollLeft() === "number", 1);
+
+        expect('KISSY.all height ' + S.all('.dom-father').height(), typeof S.all('.dom-father').height() === "number", 1);
+        expect('KISSY.all width' + S.all('.dom-father').width(), typeof S.all('.dom-father').width() === "number", 1);
+
+        expect('KISSY.all appendTo/parent/children/item 将当前节点列表中的每个元素插入到容器列表的每个元素的最后一个子节点后面.',
+            S.all('.dom-child1').appendTo(S.all('.dom-father')).parent().children().item(0).hasClass("dom-child2"), 1);
+
+        expect('KISSY.all prependTo 将当前节点列表中的每个元素插入到容器列表的每个元素的开头.', S.all('.dom-child1').prependTo(S.all('.dom-father')).parent().children().item(0).hasClass("dom-child1"), 1);
+
+//        S.all('.dom-child1').insertBefore(S.all('.dom-child2'));
+//        expect('KISSY.all insertBefore 将当前节点列表中的每个元素插入到容器列表的每个元素的开头.', S.all('.dom-father').children().item(0).hasClass('dom-child1'), 1);
+
+        S.all('.dom-father').show(5).hide(5).toggle(5).fadeIn().fadeOut().fadeToggle().slideDown().slideUp().slideToggle();
+        expect('KISSY.all show .', true, 1);
+        expect('KISSY.all hide .', true, 1);
+        expect('KISSY.all toggle .', true, 1);
+
+        expect('KISSY.all filter 获取符合选择器以及过滤参数的所有元素.', S.all('.dom-father').children().filter('.dom-child2').equals(S.all('.dom-child2')), 1);
+
+
+        expect('KISSY.all test 判断根据选择器获取的所有元素是否都符合过滤条件.', S.all('.dom-father').children().test('div'), 1);
+
+        S.all('.dom-child1').clone().insertBefore(S.all('.dom-child2'));
+        expect('KISSY.all clone 获取符合选择器的第一个元素的克隆元素.', S.all('.dom-father').children().item(1).hasClass('dom-child1'), 1);
+
+        S.all('.dom-child1').item(0).remove();
+        expect('KISSY.all remove 将符合选择器的所有元素从 DOM 中移除.', S.all('.dom-father').children().item(1).hasClass('dom-child2'), 1);
+
+        var div = document.createElement('div');
+        div.innerHTML = "<a class='a'>a</a><a class='b'>b</a>";
+        div.className = "dom-child3";
+        S.all(div).appendTo(S.all('.dom-father'));
+
+
+        expect('KISSY.all empty 清除节点的所有子孙节点以及子孙节点上的事件', S.all('.dom-father').children().item(2).hasClass('dom-child3'), 1);
+        S.all('.dom-father').children().item(2).empty();
+        expect('KISSY.all empty 清除节点的所有子孙节点以及子孙节点上的事件', document.getElementsByClassName('dom-child3')[0].innerHTML === '', 1);
+        S.all('.dom-child3').remove();
+
+        div = document.createElement("a");
+        div.className = 'temp';
+        expect('KISSY.all replaceWith 将 node 节点（数组）替换为新的节点（数组） newNode',
+            S.all('.dom-child1').replaceWith(div) && S.all('.temp').hasClass('temp'), 1);
+
+        div = document.createElement("div");
+        div.className = 'dom-child1';
+        document.getElementsByClassName('dom-father')[0].appendChild(div);
+
+        S.all('.temp').remove();
+
+
+        expect('KISSY.all offset 获取符合选择器的第一个元素相对页面文档左上角的偏移值', typeof S.all('.dom-father').offset().top, 1);
+        expect('KISSY.all offset 获取符合选择器的第一个元素相对页面文档左上角的偏移值', typeof S.all('.dom-father').offset().left, 1);
+
+        expect('KISSY.all next 获取符合选择器的第一个元素的下一个同级节点', S.all('.dom-child2').next().equals(S.all('.dom-child1')), 1)
+        expect('KISSY.all prev 获取符合选择器的第一个元素的上一个同级节点', S.all('.dom-child1 ').prev().equals(S.all('.dom-child2')), 1)
+
+        expect('KISSY.all first 获取符合选择器的第一个孩子节点', S.all('.dom-father').first().equals(S.all('.dom-child2')), 1)
+
+        expect('KISSY.all last 获取符合选择器的最后一个孩子节点', S.all('.dom-father').last().equals(S.all('.dom-child1')), 1)
+
+        expect('KISSY.all siblings 获取符合选择器的第一个元素的相应同级节点.', S.all('.dom-father').children().item(0).add(S.all('.dom-father').children().item(0).siblings()).equals(S.all('.dom-father').children()), 1)
+
+        expect('KISSY.all contains 判断某一容器(container)是否包含另一(contained)节点', S.all('.dom-father').contains(S.all('.dom-child1')), 1)
+
+        expect('KISSY.all innerWidth 获取符合选择器的第一个元素的宽度值, 注意: 该值包含 padding .', typeof S.all('.dom-father').innerWidth() === 'number', 1)
+        expect('KISSY.all innerHeight 获取符合选择器的第一个元素的高度值, 注意: 该值包含 padding . .', typeof S.all('.dom-father').innerHeight() === 'number', 1)
+        expect('KISSY.all outerWidth 获取符合选择器的第一个元素的宽度值, 注意: 该值除了包含元素本身宽度和 padding 外, 还包含 border或margin .', typeof S.all('.dom-father').outerWidth() === 'number', 1)
+        expect('KISSY.all outerHeight 获取符合选择器的第一个元素的高度值, 注意: 该值除了包含元素本身宽度和 padding 外, 还包含 border或margin .', typeof S.all('.dom-father').outerHeight() === 'number', 1)
+
+
+        var an = S.all('.dom-child2').animate({"top": 100});
+        an.pause();
+        expect('KISSY.all animate/isPaused ', an.isPaused(), 1);
+        an.resume();
+        expect('KISSY.all animate/isPaused ', an.isRunning(), 1);
+        an.stop();
+        expect('KISSY.all animate/stop ', true, 1);
+
+
+        S.all('.dom-child1').on('click', function (e) {
+            e.target.innerHTML = "fffffff"
+        });
+        S.all('.dom-child1').fire('click');
+
+        expect('KISSY.all fire js手动触发事件', S.all('.dom-child1').getDOMNodes()[0].innerHTML === "fffffff", 1);
+
+        expect('KISSY.all scrollIntoView 目测ok了', true, 1);
+
+        S.all('.inputcls').on('click',function (e) {
+            expect("kissy.al on fire 可以获取争取的值 e.target.value", e.target.value === 'landao');
+            expect("kissy.al on fire 可以获取争取的值 this.value", this.value === 'landao');
+            expect("kissy.al on fire 可以获取争取的值 S.all(this).val()", S.all(this).val() === 'landao');
+
+        }).fire('click');
+
+    });
+
+    it('S.all 方法链式写法的安全性校验', function () {
+
+        var S = KISSY;
+
+        expect('KISSY.all add方法增加的元素必须是caja容器内的元素', S.all('.dom-child1').add('.row').getDOMNodes().length === 1, 1);
+        expect('KISSY.all prependTo/appendTo 方法增加的元素必须是caja容器内的元素', S.all('.dom-child1').add('.row').getDOMNodes().length === 1, 1);
+
+
+        var el = S.all('.dom-child1').parent(5);
+
+        expect('KISSY.all parent不可以获取到超过容器外的元素', el.getDOMNodes()[0].tagName === undefined);
+
+        setTimeout(function () {
+            S.all('.rep-father').scrollIntoView();
+        }, 3000);
+
+    });
+
+})

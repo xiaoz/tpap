@@ -36,7 +36,7 @@
         }
     );
     cajaConfig={//配置下你需要引入的模块名称，最后会被use到
-        module:"openjs/1.3.0/core,openjs/thirdparty/jssdk/1.0/index"
+        modules:"openjs/1.3.0/core,openjs/thirdparty/jssdk/1.0/index"
     }
 
 </script>

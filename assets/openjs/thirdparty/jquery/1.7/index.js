@@ -1,9 +1,8 @@
 /**
  * @fileOverview 日历组件的安全适配器
  */
-KISSY.add(function (S, Calendar) {
-    var DOM = S.DOM,
-        Event = S.Event;
+KISSY.add(function (S) {
+    var $ = window.jQuery;
 
     /**
      * 提供一个init方法，名字任取，最后模块return即可。 用来初始化适配器
@@ -19,49 +18,44 @@ KISSY.add(function (S, Calendar) {
          * 因为KISSY的组件构造函数只有一个，后面可能会对构造函数本身做修改
          * 所以这里可以写一个SafeConstruector，相当于继承KISSY的组件，并且显示的声明要开放哪些api
          */
-        function SafeCalendar(el, config) {
-            this.inner = new Calendar(el, config);
+        function tameNode(node){
+            //方法占位,frame对象此时没有还
+        }
+
+        function SafejQuery(selector) {
+            this.inner = $(selector);
         }
 
         //为我们‘继承'的构造函数添加需要开放给外部使用的原型方法
-        SafeCalendar.prototype.on = function () {
-            var params = S.makeArray(arguments);
-            var self = this;
-            this.inner.on(params[0], function(e){
-                //这里因为用户肯定不需要用到e.halt这些函数，所以简单的将event封装一下（frameGroup.tame）即可
-                var event = {
-                    date: e.date && e.date.toString(),
-                    end: e.end && e.end.toString(),
-                    start: e.start && e.start.toString()
-                };
-                params[1].call(self, frameGroup.tame(event));
-            });
+        SafejQuery.prototype.add = function () {
+            var p = arguments[0];
+
+            this.inner.add(arguments)
+            return this;
         };
-        SafeCalendar.prototype.toggle = function () {
-            this.inner.toggle();
+        SafejQuery.prototype.addClass = function () {
+            this.inner.addClass(arguments[0]);
+            return this;
         };
-        SafeCalendar.prototype.hide = function () {
-            this.inner.hide();
+        SafejQuery.prototype.removeClass = function () {
+            this.inner.removeClass(arguments[0]);
+            return this;
         };
-        SafeCalendar.prototype.show = function () {
-            this.inner.show();
-        };
-        SafeCalendar.prototype.render = function () {
-            this.inner.render();
+        SafejQuery.prototype.each = function () {
+            var fn = arguments[0];
+            this.inner.each(frameGroup.markFunction(function(index,element){
+                fn(index,tameNode(element));
+            }));
+            return this;
         };
 
         //---- 组件是一个构造函数进行初始化的，需要markCtor标记一下，让caja容器认识
-        frameGroup.markCtor(SafeCalendar);
+        frameGroup.markCtor(SafejQuery);
 
         //构造函数实例的方法，需要grantMethod ，加入白名单，没有加入白名单的不可以使用，caja容器不认识
-        frameGroup.grantMethod(SafeCalendar, "toggle");
-        frameGroup.grantMethod(SafeCalendar, "render");
-        frameGroup.grantMethod(SafeCalendar, "hide");
-        frameGroup.grantMethod(SafeCalendar, "show");
-        frameGroup.grantMethod(SafeCalendar, "on");
-
-
-
+        frameGroup.grantMethod(SafejQuery, "addClass");
+        frameGroup.grantMethod(SafejQuery, "removeClass");
+        frameGroup.grantMethod(SafejQuery, "each");
 
         /**
          * @param context 上下文
@@ -71,11 +65,16 @@ KISSY.add(function (S, Calendar) {
          */
         return function (context) {
 
+            tameNode = function(n){
+               return context.frame.imports.tameNode___(n, true);
+            }
+
             //最终需要返回给
             return {
-                Calendar: frameGroup.markFunction(function () {
-                    return new SafeCalendar(arguments[0], cajaAFTB.untame(arguments[1]));
-                })
+                jQuery: frameGroup.tame(frameGroup.markFunction(function () {
+                    return new SafejQuery(arguments[0]);
+                })),
+                kissy:false
             }
         }
 
@@ -83,6 +82,4 @@ KISSY.add(function (S, Calendar) {
 
     return init;
 
-}, {
-    requires: ['calendar', 'calendar/assets/dpl.css']
 });

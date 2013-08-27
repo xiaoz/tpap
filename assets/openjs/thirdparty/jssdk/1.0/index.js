@@ -1,5 +1,5 @@
 /**
- * @fileOverview 日历组件的安全适配器
+ * @fileOverview jssdk组件的安全适配器
  * @depends 依赖于页面中正确的引入了jssdk的库文件
  */
 KISSY.add(function (S) {

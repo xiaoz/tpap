@@ -53,17 +53,20 @@ KISSY.add(function (S, Calendar) {
          * 不开放的接口 append prepend before after html attr相关 prop hasProp css index data removeData hasData unselectable
          */
             // 声明外部类库构造器以及函数
-        S.NodeList.prototype.constructor = S.NodeList;
-        frameGroup.markCtor(S.NodeList);
-        var nodeFuncs = ('c_getDOMNodes end equals c_add item slice scrollTop scrollLeft height width' +
-            ' c_appendTo c_prependTo c_insertBefore c_insertAfter c_animate stop run pause resume isRunning isPaused' +
+        function SafeNodeList(selector){
+            this.inner = new NodeList(selector)
+        }
+
+        frameGroup.markCtor(SafeNodeList);
+        var nodeFuncs = ('getDOMNodes end equals add item slice scrollTop scrollLeft height width' +
+            ' appendTo prependTo insertBefore insertAfter animate stop run pause resume isRunning isPaused' +
             ' show hide toggle fadeIn fadeOut' +
-            ' fadeToggle slideDown slideUp slideToggle c_filter test clone empty replaceWith' +
-            ' parent hasClass c_addClass removeClass replaceClass toggleClass ' +
-            'val text toggle offset scrollIntoView c_next c_prev c_first' +
-            ' c_last c_siblings c_children contains remove  ' +
-            'contains innerWidth innerHeight outerWidth outerHeight c_on c_delegate c_detach fire all len c_attr c_removeAttr c_hasAttr ' +
-            'c_data c_hasData c_removeData').split(' ');
+            ' fadeToggle slideDown slideUp slideToggle filter test clone empty replaceWith' +
+            ' parent hasClass addClass removeClass replaceClass toggleClass ' +
+            'val text toggle offset scrollIntoView next prev first' +
+            ' last siblings children contains remove  ' +
+            'contains innerWidth innerHeight outerWidth outerHeight on delegate detach fire all len attr removeAttr hasAttr ' +
+            'data hasData removeData').split(' ');
 
         /**
          * EventObject 的回调属性获取
@@ -192,32 +195,31 @@ KISSY.add(function (S, Calendar) {
             });
 
             //on和detach 手动转发给Event.on 和 Event.detach
-            S.NodeList.prototype.c_on = function (event, handle, scope) {
+            SafeNodeList.prototype.on = function (event, handle, scope) {
                 var self = this;
-                var s = self.getDOMNodes();
+                var s = self.inner.getDOMNodes();
                 Event_On(s, event, handle, scope);
                 return this;
             };
 
             //on和detach 手动转发给Event.on 和 Event.detach
-            S.NodeList.prototype.c_delegate = function (event, filter, handle, scope) {
+            SafeNodeList.prototype.delegate = function (event, filter, handle, scope) {
                 var self = this;
-                var s = self.getDOMNodes();
+                var s = self.inner.inner.getDOMNodes();
                 Event_Delegate(s, event, handle, scope);
                 return this;
             };
 
-            S.NodeList.prototype.c_detach = function (event, handle, scope) {
+            SafeNodeList.prototype.detach = function (event, handle, scope) {
                 var self = this;
-                var s = self.getDOMNodes();
+                var s = self.inner.getDOMNodes();
                 Event_Remove(s, event, handle, scope);
                 return this;
             };
-
             /**
              * getDOMNodes tame一下
              */
-            S.NodeList.prototype.c_getDOMNodes = function () {
+            SafeNodeList.prototype.getDOMNodes = function () {
                 var l = [];
                 S.each(this.getDOMNodes(), function (a) {
                     l.push(tame(a));
@@ -229,24 +231,23 @@ KISSY.add(function (S, Calendar) {
              *  node接口中，有使用到选择器的部分，都用query限定下范围
              */
             S.each(('add appendTo prependTo insertBefore insertAfter').split(' '), function (fn) {
-                S.NodeList.prototype['c_' + fn] = function (sel) {
-                    return this[fn](query(sel))
+                SafeNodeList.prototype[fn] = function (sel) {
+                    return this.inner[fn](query(sel))
                 };
             });
-
             /**
              *  node接口中，attr ,data都只允许获得自定义属性
              */
             S.each(('data hasData removeData').split(' '), function (fn) {
-                S.NodeList.prototype['c_' + fn] = function (sel, name, value) {
-                    return this[fn](query(sel), name, cajaAFTB.untame(value));
+                SafeNodeList.prototype[ fn] = function (sel, name, value) {
+                    return this.inner[fn](query(sel), name, cajaAFTB.untame(value));
                 };
             });
 
             S.each(('attr hasAttr removeAttr').split(' '), function (fn) {
-                S.NodeList.prototype['c_' + fn] = function (sel, name, value) {
+                SafeNodeList.prototype[ fn] = function (sel, name, value) {
                     if (S.isString(name) && S.startsWith(name, 'data-')) {
-                        return this[fn](query(sel), name, cajaAFTB.untame(value));
+                        return this.inner[fn](query(sel), name, cajaAFTB.untame(value));
                     }
                 };
             });
@@ -255,9 +256,9 @@ KISSY.add(function (S, Calendar) {
              *  NodeList 支持的filter，第二个参数都支持函数, 这里面为了简单，先去掉函数的支持，只支持选择器过滤规则
              */
             S.each(('filter next prev first last siblings children').split(' '), function (fn) {
-                S.NodeList.prototype['c_' + fn] = function (filter) {
+                SafeNodeList.prototype[ fn] = function (filter) {
                     if (!S.isFunction(filter)) {
-                        return this[fn](filter);
+                        return this.inner[fn](filter);
                     } else {
                         S.error('filter参数必须是字符串');
                         return this;
@@ -265,24 +266,21 @@ KISSY.add(function (S, Calendar) {
                 }
             });
 
-            S.NodeList.prototype.len = function () {
-                return this.length;
+            SafeNodeList.prototype.len = function () {
+                return this.inner.length;
             };
-
-            S.NodeList.prototype.c_animate = function () {
+            SafeNodeList.prototype.animate = function () {
                 var args = S.makeArray(arguments);
                 if (S.isObject(args[0])) {
                     args[0] = cajaAFTB.untame(args[0]);
                 }
-                return this.animate(args[0], args[1], args[2], args[3]);
+                return this.inner.animate(args[0], args[1], args[2], args[3]);
             };
-
-            S.NodeList.prototype.c_addClass = function (sel) {
-                return  this.addClass(sel);
+            SafeNodeList.prototype.addClass = function (sel) {
+                return  this.inner.addClass(sel);
             };
-
             S.each(nodeFuncs, function (func) {
-                frameGroup.grantMethod(S.NodeList, func);
+                frameGroup.grantMethod(SafeNodeList, func);
             });
 
             return {
@@ -466,7 +464,7 @@ KISSY.add(function (S, Calendar) {
                 },
 
                 all: frameGroup.markFunction(function () {
-                    return S.all(query(arguments[0]));
+                    return new SafeNodeList(query(arguments[0]));
                 }),
 
                 alert: frameGroup.markFunction(function (x) {
