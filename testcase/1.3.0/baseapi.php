@@ -44,7 +44,7 @@
 <script type="text/javascript">
     KISSY.config(
         {
-            debug: false,
+            debug: true,
             packages: [
                 {
                     name: "openjs", //°üÃû

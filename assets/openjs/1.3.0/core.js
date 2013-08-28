@@ -53,19 +53,20 @@ KISSY.add(function (S, Calendar) {
          * 不开放的接口 append prepend before after html attr相关 prop hasProp css index data removeData hasData unselectable
          */
             // 声明外部类库构造器以及函数
-        function SafeNodeList(selector){
-            this.inner = new NodeList(selector)
+
+        function SafeNodeList(selector) {
+            this.inner = S.all(selector)
         }
 
         frameGroup.markCtor(SafeNodeList);
-        var nodeFuncs = ('getDOMNodes end equals add item slice scrollTop scrollLeft height width' +
+        var nodeFuncs = ('index getDOMNodes getDOMNode end equals add item slice scrollTop scrollLeft height width' +
             ' appendTo prependTo insertBefore insertAfter animate stop run pause resume isRunning isPaused' +
             ' show hide toggle fadeIn fadeOut' +
             ' fadeToggle slideDown slideUp slideToggle filter test clone empty replaceWith' +
             ' parent hasClass addClass removeClass replaceClass toggleClass ' +
             'val text toggle offset scrollIntoView next prev first' +
             ' last siblings children contains remove  ' +
-            'contains innerWidth innerHeight outerWidth outerHeight on delegate detach fire all len attr removeAttr hasAttr ' +
+            'innerWidth innerHeight outerWidth outerHeight on delegate detach fire all len attr removeAttr hasAttr ' +
             'data hasData removeData').split(' ');
 
         /**
@@ -221,36 +222,133 @@ KISSY.add(function (S, Calendar) {
              */
             SafeNodeList.prototype.getDOMNodes = function () {
                 var l = [];
-                S.each(this.getDOMNodes(), function (a) {
+                S.each(this.inner.getDOMNodes(), function (a) {
                     l.push(tame(a));
                 });
                 return l;
+            };
+            SafeNodeList.prototype.getDOMNode = function () {
+               return this.getDOMNodes[0]
+            };
+            SafeNodeList.prototype.slice = function (p1, p2) {
+                return new SafeNodeList(this.inner.slice(p1, p2));
+
+            };
+            SafeNodeList.prototype.stop = function () {
+                this.inner.stop.apply(this.inner,arguments);
+                return this;
+
+            };
+            SafeNodeList.prototype.remove = function () {
+                this.inner.remove();
+                return this;
+
+            };
+            SafeNodeList.prototype.scrollIntoView = function () {
+                var p = S.makeArray(arguments);
+                if(p[2]){
+                    p[2] = query(p[2]);
+                }
+                this.inner.scrollIntoView.apply(this.inner,p);
+                return this;
+
+            };
+            SafeNodeList.prototype.val  = function () {
+                if(arguments[0]){
+                    this.inner.val (arguments[0]);
+                    return this;
+                }else{
+                    return this.inner.val();
+                }
+
+
+            };
+            SafeNodeList.prototype.text = function () {
+                if(arguments[0]){
+                    this.inner.text (arguments[0]);
+                    return this;
+                }else{
+                    return this.inner.text();
+                }
+
+            };
+
+            SafeNodeList.prototype.offset = function () {
+                return this.inner.offset();
+
+            };
+            SafeNodeList.prototype.replaceWith = function (replace) {
+                if (replace.inner) {
+                    this.inner.replaceWith(replace.inner);
+                } else {
+                    this.inner.replaceWith(query(replace));
+                }
+                return this;
+
+            };
+            SafeNodeList.prototype.empty = function () {
+                this.inner.empty();
+                return this;
+
             };
 
             /**
              *  node接口中，有使用到选择器的部分，都用query限定下范围
              */
-            S.each(('add appendTo prependTo insertBefore insertAfter').split(' '), function (fn) {
+            S.each(('appendTo prependTo insertBefore insertAfter').split(' '), function (fn) {
                 SafeNodeList.prototype[fn] = function (sel) {
-                    return this.inner[fn](query(sel))
+                    this.inner[fn](query(sel.inner));
+                    return this;
                 };
             });
             /**
              *  node接口中，attr ,data都只允许获得自定义属性
              */
-            S.each(('data hasData removeData').split(' '), function (fn) {
+            S.each(('data removeData').split(' '), function (fn) {
                 SafeNodeList.prototype[ fn] = function (sel, name, value) {
-                    return this.inner[fn](query(sel), name, cajaAFTB.untame(value));
+                    this.inner[fn](query(sel), name, cajaAFTB.untame(value));
+                    return this;
                 };
             });
+            SafeNodeList.prototype.hasData = function (sel, name, value) {
+                return this.inner.hasData(query(sel), name, cajaAFTB.untame(value));
+            };
+            SafeNodeList.prototype.add = function (sel) {
+                if(sel.inner){
+                    return new SafeNodeList(this.inner.add(sel.inner))
+                }else{
+                    return new SafeNodeList(this.inner.add(query(sel)))
+                }
 
-            S.each(('attr hasAttr removeAttr').split(' '), function (fn) {
+            };
+            SafeNodeList.prototype.parent = function (filter) {
+                filter = filter || 1;
+                if (S.isNumber(filter) || S.isString(filter)) {
+                    var p = this.inner.parent(filter);
+                    if (S.one(param.mod).contains(p)) {
+                        return new SafeNodeList(p);
+                    } else {
+                        return new SafeNodeList(param.mod);
+                    }
+                } else {
+                    S.log("only string or number is supported");
+                    return this;
+                }
+            };
+
+            S.each(('attr removeAttr').split(' '), function (fn) {
                 SafeNodeList.prototype[ fn] = function (sel, name, value) {
                     if (S.isString(name) && S.startsWith(name, 'data-')) {
-                        return this.inner[fn](query(sel), name, cajaAFTB.untame(value));
+                        this.inner[fn](query(sel), name, cajaAFTB.untame(value));
+                        return this;
                     }
                 };
             });
+            SafeNodeList.prototype.hasAttr = function (sel, name, value) {
+                if (S.isString(name) && S.startsWith(name, 'data-')) {
+                    return this.inner.hasAttr(query(sel), name, cajaAFTB.untame(value));
+                }
+            };
 
             /**
              *  NodeList 支持的filter，第二个参数都支持函数, 这里面为了简单，先去掉函数的支持，只支持选择器过滤规则
@@ -258,27 +356,142 @@ KISSY.add(function (S, Calendar) {
             S.each(('filter next prev first last siblings children').split(' '), function (fn) {
                 SafeNodeList.prototype[ fn] = function (filter) {
                     if (!S.isFunction(filter)) {
-                        return this.inner[fn](filter);
+                        return new SafeNodeList(this.inner[fn](filter));
                     } else {
-                        S.error('filter参数必须是字符串');
+                        S.log('filter参数必须是字符串');
                         return this;
                     }
+
                 }
             });
 
             SafeNodeList.prototype.len = function () {
                 return this.inner.length;
             };
+            SafeNodeList.prototype.scrollTop = function () {
+                return this.inner.scrollTop()
+            };
+            SafeNodeList.prototype.innerWidth  = function () {
+                return this.inner.innerWidth ()
+            };
+            SafeNodeList.prototype.innerHeight  = function () {
+                return this.inner.innerHeight ()
+            };
+
+            SafeNodeList.prototype.outerWidth  = function () {
+                return this.inner.outerWidth ()
+            };
+
+            SafeNodeList.prototype.outerHeight  = function () {
+                return this.inner.outerHeight ()
+            };
+            SafeNodeList.prototype.pause  = function (p) {
+                this.inner.pause(p);
+                return this;
+            };
+            SafeNodeList.prototype.isPaused  = function (p) {
+                return this.inner.isPaused();
+            };
+            SafeNodeList.prototype.isRunning  = function (p) {
+                return this.inner.isRunning();
+            };
+            SafeNodeList.prototype.resume   = function (p) {
+                 this.inner.resume (p);
+                return this;
+            };
+            SafeNodeList.prototype.isPaused  = function (p) {
+                return this.inner.isPaused();
+            };
+
+            SafeNodeList.prototype.contains  = function (sel) {
+                if(sel.inner){
+                    return this.inner.contains (sel.inner)
+                }else{
+                    return this.inner.contains (query(sel))
+                }
+
+            };
+            SafeNodeList.prototype.scrollLeft = function () {
+                return this.inner.scrollLeft()
+            };
+            SafeNodeList.prototype.height = function () {
+                return this.inner.height()
+            };
+            SafeNodeList.prototype.width = function () {
+                return this.inner.width()
+            };
+
+            SafeNodeList.prototype.fire = function () {
+                this.inner.fire.apply(this.inner,arguments);
+                return this;
+            };
+
+            S.each(('show hide toggle fadeIn fadeOut fadeToggle slideDown slideUp slideToggle').split(' '), function (fn) {
+                SafeNodeList.prototype[fn] = function () {
+                    this.inner[fn].apply(this.inner, arguments);
+                    return this;
+                }
+            });
+
+
             SafeNodeList.prototype.animate = function () {
                 var args = S.makeArray(arguments);
                 if (S.isObject(args[0])) {
                     args[0] = cajaAFTB.untame(args[0]);
                 }
-                return this.inner.animate(args[0], args[1], args[2], args[3]);
+                this.inner.animate(args[0], args[1], args[2], args[3]);
+                return this;
             };
             SafeNodeList.prototype.addClass = function (sel) {
-                return  this.inner.addClass(sel);
+                this.inner.addClass(sel);
+                return this
             };
+            SafeNodeList.prototype.hasClass = function (param) {
+                return  this.inner.hasClass(param);
+            };
+            SafeNodeList.prototype.removeClass = function (param) {
+                this.inner.removeClass(param);
+                return this;
+            };
+            SafeNodeList.prototype.toggleClass = function (param) {
+                this.inner.toggleClass(param);
+                return this;
+            };
+            SafeNodeList.prototype.replaceClass = function (p1, p2) {
+                this.inner.replaceClass(p1, p2);
+                return this;
+            };
+            SafeNodeList.prototype.equals = function (param) {
+                return  this.inner.equals(param.inner);
+            };
+            SafeNodeList.prototype.all = function (param) {
+                this.inner.all(param);
+                return this;
+            };
+            SafeNodeList.prototype.end = function () {
+                this.inner.end();
+                return this;
+            };
+            SafeNodeList.prototype.item = function (index) {
+                return new SafeNodeList(this.inner.item(index));
+            };
+            SafeNodeList.prototype.index = function () {
+                return this.inner.index(arguments[0]);
+            };
+            SafeNodeList.prototype.clone = function () {
+                return new SafeNodeList(this.inner.clone.apply(this.inner, arguments));
+            };
+            SafeNodeList.prototype.test = function (filter) {
+                if (S.isFunction(filter)) {
+                    this.inner.test(function (a, b) {
+                        return filter(tame(a), b);
+                    });
+                } else {
+                    return  this.inner.test(filter, param.mod);
+                }
+            };
+
+
             S.each(nodeFuncs, function (func) {
                 frameGroup.grantMethod(SafeNodeList, func);
             });

@@ -388,6 +388,7 @@ describe('基本的语言测试', function () {
 //        expect('KISSY.all insertBefore 将当前节点列表中的每个元素插入到容器列表的每个元素的开头.', S.all('.dom-father').children().item(0).hasClass('dom-child1'), 1);
 
         S.all('.dom-father').show(5).hide(5).toggle(5).fadeIn().fadeOut().fadeToggle().slideDown().slideUp().slideToggle();
+
         expect('KISSY.all show .', true, 1);
         expect('KISSY.all hide .', true, 1);
         expect('KISSY.all toggle .', true, 1);
@@ -483,7 +484,7 @@ describe('基本的语言测试', function () {
 
         var el = S.all('.dom-child1').parent(5);
 
-        expect('KISSY.all parent不可以获取到超过容器外的元素', el.getDOMNodes()[0].tagName === undefined);
+        expect('KISSY.all parent不可以获取到超过容器外的元素', el.getDOMNodes()[0].className==="J_TScriptedModule" );
 
         setTimeout(function () {
             S.all('.rep-father').scrollIntoView();
