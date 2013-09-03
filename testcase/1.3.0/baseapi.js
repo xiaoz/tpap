@@ -1,3 +1,26 @@
+var $$ = KISSY.all;
+console.log($$('a').length);
+
+KISSY.io({
+    jsoncallback: "jsonp22",
+    jsonp: "callback" ,
+    url: "http://jue.taobao.net:8080/CaiJae/flash/LotteryServelt.do",
+    data: {"username":"123","sellernick":"jue510510"},
+    success: function(data, textStatus, xhr) {
+        KISSY.alert(KISSY.JSON.stringify(data));
+    },
+    complete: function(data){
+        KISSY.alert(KISSY.JSON.stringify(data));
+    },
+    // 请求错误时的回调
+    error: function(textStatus, io){
+        KISSY.alert("error");
+    },
+    //发送请求类型是jsonp
+    dataType:"jsonp"
+});
+
+
 describe('对象基本方法和字符串测试', function () {
 
     it('对象的属性和函数测试', function () {

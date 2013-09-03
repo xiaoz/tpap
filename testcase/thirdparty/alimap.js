@@ -14,7 +14,7 @@ describe('alimap', function () {
 
         var marker = new AliMarker(lat);
         map.addOverlay(marker);
-        var icons=[
+       var icons=[
             new AliIcon("http://ditu.aliyun.com/jsdoc/map/example/overlay/icon1.gif",{x:16,y:27},{x:8,y:27}),
             new AliIcon("http://ditu.aliyun.com/jsdoc/map/example/overlay/icon2.png",{x:49,y:59},{x:24,y:56}),
             new AliIcon("http://ditu.aliyun.com/jsdoc/map/example/overlay/icon3.png",{x:49,y:59},{x:24,y:56})
@@ -25,21 +25,24 @@ describe('alimap', function () {
 
         lat = new AliLatLng(30.261875,120.155679);
         map.panTo(lat);
-        var aliEvent = new AliEvent();
 
-        aliEvent.addListener(map,'click',function(point){
-            console.log(point.x);
+       var a = marker.getLatLng();
+        console.log(a.lat(), a.lng());
+
+       /*    setInterval(function(){
+            map.zoomIn();
+        },1000);*/
+
+
+
+          AliEvent.addListener(map,'aftermove',function(point){
+            console.log(point.lat())
+           });
+           AliEvent.addListener(map,'click',function(point){
+            console.log(point.x)
         });
-
-        var a = marker.getLatLng();
-           console.log(a.la);   //todo 这里是否需要重新组织返回值？
-        /*    setInterval(function(){
-         map.zoomIn();
-         },1000);*/
-
-        var aliEvent = AliEvent();
-        AliEvent.addListener(map,'click',function(point){
-            console.log('click',point.y);
+        AliEvent.addListener(marker, 'click',function(point){
+            map.panTo(new AliLatLng(point.lat(),point.lng()));
         });
 
     });

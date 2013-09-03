@@ -96,8 +96,8 @@
 
         if ("href" === hints.XML_ATTR) {
             //check whether the uri is in blacklist
-            for (var i = 0, l = URI_RULE.BLACK_LIST.length; i < l; i++) {
-                if (-1 !== uri.indexOf(URI_RULE.BLACK_LIST[i])) { //in blacklist then return directly
+            for (var i = 0, l = URI_RULE.black_list.length; i < l; i++) {
+                if (-1 !== uri.indexOf(URI_RULE.black_list[i])) { //in blacklist then return directly
                     return;
                 }
             }
@@ -108,8 +108,8 @@
                 , hostname = (-1 === lastSlashPos) ? tUri : tUri.substring(0, lastSlashPos);
 
             //check whether the uri is in whitelist
-            for (var i = 0, l = URI_RULE.WHITE_LIST.length; i < l; i++) {
-                if (-1 !== hostname.indexOf(URI_RULE.WHITE_LIST[i])) { //not in whitelist
+            for (var i = 0, l = URI_RULE.white_list.length; i < l; i++) {
+                if (-1 !== hostname.indexOf(URI_RULE.white_list[i])) { //not in whitelist
                     return uri;
                 }
             }

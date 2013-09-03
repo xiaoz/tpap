@@ -8,21 +8,9 @@
 </div>
 
 <script>
-    KISSY.config(
-        {
-            debug: false,
-            packages: [
-                {
-                    name: "openjs", //包名
-                    tag: "20130527",//时间戳, 添加在动态脚本路径后面, 用于更新包内模块代码
-                    path:"../../assets", //包对应路径, 相对路径指相对于当前页面路径    //
-                    charset: "utf-8" //包里模块文件编码格式
-                }
-            ]
-        }
-    );
+
     cajaConfig={//配置下你需要引入的模块名称，最后会被use到
-        modules:"openjs/thirdparty/alimap/1.0/index"
+        modules:"openjs/alimap/1.0/index"
     }
 </script>
 

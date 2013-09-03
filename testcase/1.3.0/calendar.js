@@ -6,5 +6,5 @@ var c =new Calendar('.J_Calendar', {
 });
 c.on('select', function (e) {
     console.log(this.on);
-    console.log(new Date(e.date).getDate());
+    console.log(e.date);
 })
