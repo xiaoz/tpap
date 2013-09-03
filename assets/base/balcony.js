@@ -102,11 +102,11 @@
                         frame: frame,
                         mod: scriptedMod
                     });
-                    if(false === obj.kissy){
-                        obj.kissy = undefined;
-                        S.mix(third_party,obj);
-                    }else{
+                    if(true === obj.kissy){
                         S.mix(exposed_kissy, obj);
+                        obj.kissy = undefined;
+                    }else{
+                        S.mix(third_party,obj);
                     }
                 });
 

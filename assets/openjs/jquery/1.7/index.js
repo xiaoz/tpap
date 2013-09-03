@@ -73,8 +73,7 @@ KISSY.add(function (S) {
             return {
                 jQuery: frameGroup.tame(frameGroup.markFunction(function () {
                     return new SafejQuery(arguments[0]);
-                })),
-                kissy:false
+                }))
             }
         }
 

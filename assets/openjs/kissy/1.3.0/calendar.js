@@ -75,7 +75,8 @@ KISSY.add(function (S, Calendar) {
             return {
                 Calendar: frameGroup.markFunction(function () {
                     return new SafeCalendar(arguments[0], cajaAFTB.untame(arguments[1]));
-                })
+                }),
+                kissy:true
             }
         }
 

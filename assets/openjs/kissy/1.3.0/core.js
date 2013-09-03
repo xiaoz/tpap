@@ -614,24 +614,20 @@ KISSY.add(function (S, Calendar) {
                     var untamedcfg = cajaAFTB.untame(cfg);
                     untamedcfg.data = cajaAFTB.untame(untamedcfg.data);
 
-                    var url = untamedcfg.url, flag = false;
-                    url = parseURL(url).url;
-                    S.each(urlIO, function (reg) {
-                        if (reg.test(url)) {
-                            flag = true;
-                        }
-                    });
+                    var url = untamedcfg.url;
+
+                    url = cajaAFTB.rewriteURL(url, null, null, {XML_ATTR: "href"});
 
                     //这里处理下，目前只支持json或者jsonp的形式
                     if (!('json' === untamedcfg.dataType || 'jsonp' === untamedcfg.dataType)) {
                         untamedcfg.dataType = "jsonp";
                     }
 
-                    if (flag) {
+                    if (url) {
                         return S.io(S.mix(untamedcfg));
                     } else {
                         return function () {
-                            //这里以后都加一个异常函数，统一处理
+                            S.log('url 不在白名单中.')
                         };
                     }
 
@@ -682,7 +678,9 @@ KISSY.add(function (S, Calendar) {
 
                 alert: frameGroup.markFunction(function (x) {
                     alert(x);
-                })
+                }),
+
+                kissy:true
             };
         }
 

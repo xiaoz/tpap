@@ -135,8 +135,7 @@ KISSY.add(function (S) {
 
             //最终需要返回给
             return {
-                GS: frameGroup.tame(GS),
-                kissy: false
+                GS: frameGroup.tame(GS)
             }
         }
 

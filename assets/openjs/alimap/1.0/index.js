@@ -276,8 +276,7 @@ KISSY.add(function (S) {
                             param[2].call(this,tmp); //frameGroup.tame(point)
                         }));
                     })
-                }),
-                kissy: false
+                })
             }
         }
 

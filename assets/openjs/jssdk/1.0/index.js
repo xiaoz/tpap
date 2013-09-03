@@ -84,8 +84,7 @@ KISSY.add(function (S) {
                         }
                         return TOP.ui(param[0],param[1]);
                     })
-                }),
-                kissy:false
+                })
             }
         }
 

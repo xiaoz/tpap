@@ -134,7 +134,8 @@ KISSY.add(function (S, LineChart, BarChart, PieChart) {
                         cfg.renderTo = S.DOM.get(cfg.renderTo, context.mod);
                         return new SafePieChart(cfg);
                     })
-                }
+                },
+                kissy:true
             }
         }
 
