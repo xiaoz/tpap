@@ -1,10 +1,6 @@
-var Calendar = KISSY.Calendar;
-var c =new Calendar('.J_Calendar', {
-    maxDate: new Date(),
-    popup: true,
-    show: true
-});
-c.on('select', function (e) {
-    console.log(this.on);
-    console.log(e.date);
-})
+var Calendar = KISSY.Calendar;//日历组件默认在KISSY的命名空间下
+var cal = new Calendar('.calendar', {
+        popup: true,
+        minDate: new Date()
+    }
+);

@@ -7,6 +7,10 @@
 -->
 
 <div id="dom-test" data-componentid="uniqueSign" class="J_TScriptedModule">
+    <div class='t1'>
+        <a class='t3'>1111</a>
+    </div>
+
     <div class="top-authbtn-container top-login-btn-container"></div>
     <!--    <div id="mapDiv" style="width:800px;height:600px"></div>-->
     <a>test1</a>
@@ -32,6 +36,11 @@
     <div class="rep-father">
         <div class="rep-child1"></div>
         <div class="rep-child2"></div>
+    </div>
+    <div class="array">
+        <p class="cls">1111</p>
+        <p class="cls">222</p>
+        <p class="cls">333</p>
     </div>
 
     <!--    <input type="text" class="J_Calendar" name="sdfu7"/>-->

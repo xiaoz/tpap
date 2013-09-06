@@ -1,5 +1,5 @@
 /**
- * @fileOverview uploader组件的安全适配器
+ * @fileOverview gs组件的安全适配器
  * @depends
  */
 KISSY.add(function (S) {
@@ -25,6 +25,14 @@ KISSY.add(function (S) {
         };
         GS.addListener.Fncs = [];
 
+        GS.fireListener = function (name, config) {
+            if (GS.fireListener.Fncs[name]) {
+                GS.fireListener.Fncs[name](config);
+            }
+        };
+        GS.fireListener.Fncs = [];
+
+        //监听下scroll事件
         (function () {
             Event.on(window, 'scroll', function (e) {
                 var event = {
@@ -41,6 +49,40 @@ KISSY.add(function (S) {
             });
         })();
 
+
+
+
+        //触发scroll
+        (function () {
+            GS.fireListener.Fncs['windowScroll'] = function(config){
+                config.props = config.props || {};
+                var props = {};
+                props.scrollTop = config.props.scrollTop ;
+
+                KISSY.Anim(window,props,config.duration,config.easing).run();
+            }
+        })();
+
+        //监听resize
+        (function () {
+            Event.on(window, 'resize', function (e) {
+                var event = {
+                    viewportHeight: DOM.viewportHeight(),
+                    viewportWidth: DOM.viewportWidth()
+                };
+                frameGroup.markReadOnlyRecord(event);
+                var tameEvent = frameGroup.tame(event);
+
+                if (GS.addListener.Fncs['windowResize']) {
+                    for (var i = 0; i < GS.addListener.Fncs['windowResize'].length; i++) {
+                        GS.addListener.Fncs['windowResize'][i](tameEvent);
+                    }
+                }
+            });
+        })();
+
+
+        //提供上传功能
         (function () {
             var genTokenid = "#J_TCajaGenToken"; //页面临时产生token的id标示
             var targetId = "tempCajaIframe";
@@ -132,6 +174,7 @@ KISSY.add(function (S) {
         return function (context) {
             GS = frameGroup.markReadOnlyRecord(GS);
             frameGroup.markFunction(GS.addListener);
+            frameGroup.markFunction(GS.fireListener);
 
             //最终需要返回给
             return {

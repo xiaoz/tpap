@@ -6,12 +6,7 @@
     用户的javascript理论上只可以作用到这个dom下面，不可以"越界"
 -->
 <div class="J_TScriptedModule" data-componentid="uniqueSign">
-    <input type="text" name="d" class="J_Calendar"/>
-    <input type="text" name="d" class="J_Calendar"/>
-    <input type="text" name="d" class="J_Calendar"/>
-    <input type="text" name="d" class="J_Calendar"/>
-    <input type="text" name="d" class="J_Calendar"/>
-    <input type="text" name="d" class="J_Calendar"/>
+    <input type="text" name="cal1" class="calendar" />
 </div>
 
 <!--模块初始化的包配置，都很熟悉了-->

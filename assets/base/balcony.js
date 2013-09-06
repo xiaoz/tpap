@@ -73,6 +73,7 @@
             getAdapterObjectFncs.push(fnc(frameGroup));
         });
 
+        var extraExposed = S.isFunction(window.getCajaExposed) ? window.getCajaExposed(frameGroup, cajaAFTB) : {};
 
         S.each(scriptedMods, function (scriptedMod) {
             var prototypeId = DOM.attr(scriptedMod, "data-componentid");
@@ -112,7 +113,7 @@
 
                 //var start_time = +new Date();
                 var prepareEnv = frame.contentCajoled('', cajoledJS);
-                var extraExposed = S.isFunction(window.getCajaExposed) ? window.getCajaExposed(frameGroup, cajaAFTB) : {};
+
                 var coreObj = {
                     KISSY: frameGroup.tame(exposed_kissy),
                     onerror: onerror

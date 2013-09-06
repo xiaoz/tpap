@@ -64,7 +64,7 @@ KISSY.add(function (S, Calendar) {
             ' show hide toggle fadeIn fadeOut' +
             ' fadeToggle slideDown slideUp slideToggle filter test clone empty replaceWith' +
             ' parent hasClass addClass removeClass replaceClass toggleClass ' +
-            'val text toggle offset scrollIntoView next prev first' +
+            'val text each toggle offset scrollIntoView next prev first' +
             ' last siblings children contains remove  ' +
             'innerWidth innerHeight outerWidth outerHeight on delegate detach fire all len attr removeAttr hasAttr ' +
             'data hasData removeData').split(' ');
@@ -228,8 +228,16 @@ KISSY.add(function (S, Calendar) {
                 return l;
             };
             SafeNodeList.prototype.getDOMNode = function () {
-               return this.getDOMNodes[0]
+               return tame(this.inner.getDOMNode());
             };
+
+            SafeNodeList.prototype.each = function (fnc) {
+                this.inner.each(function(item,index){
+                    fnc.call(SafeNodeList, new SafeNodeList(item),index);
+                });
+                return this;
+            };
+
             SafeNodeList.prototype.slice = function (p1, p2) {
                 return new SafeNodeList(this.inner.slice(p1, p2));
 

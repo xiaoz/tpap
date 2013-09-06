@@ -5,3 +5,5 @@ GS.addListener('windowScroll',function(e){
     console.log(e.scrollTop)
 });
 
+
+console.log(KISSY.DOM.offset('.aaaaa').top);

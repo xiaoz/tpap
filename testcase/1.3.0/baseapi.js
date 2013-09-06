@@ -1,3 +1,6 @@
+KISSY.all('div').each(function(a,b){
+        console.log(a.addClass('abc'),b);
+})
 
 describe('对象基本方法和字符串测试', function () {
 
