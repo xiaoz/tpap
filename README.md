@@ -26,6 +26,7 @@ https://github.com/lorrylockie/caja-kissy/issues
 
 
 #### 目录结构说明
+* ``工程都是GBK编码``
 * assets 前端源代码
 * assets/base caja-kissy的一些基础环境工具
 * asssets/openjs caja-kissy的适配模块代码，代码中有详细的注释。适配过程中可以参考一些其他模块。模块的适配已经规范化
@@ -42,3 +43,4 @@ https://github.com/lorrylockie/caja-kissy/issues
 #### 代码运行
 * 将项目目录，放到php 服务器中，访问index.php
 * 编写完适配代码，`grunt`, 项目打包
+
