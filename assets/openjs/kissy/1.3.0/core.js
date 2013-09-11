@@ -17,25 +17,6 @@ KISSY.add(function (S, Calendar) {
     function init(frameGroup) {
 
         /**
-         * parse url  easy way but ugly
-         * @param url
-         * @return {Object}
-         */
-        function parseURL(url) {
-            if (url.indexOf("http://") !== 0) { //相对路径
-                return {
-                    url: document.location.hostname
-                };
-            }
-            var parser = document.createElement('a');
-            parser.href = url;
-            var p = KISSY.clone({url: parser.hostname});
-            parser = null;
-            return p;
-        }
-
-
-        /**
          * untame 属性
          */
             // 声明外部类库构造器以及函数
@@ -262,7 +243,7 @@ KISSY.add(function (S, Calendar) {
 
             };
             SafeNodeList.prototype.val  = function () {
-                if(arguments[0]){
+                if(arguments[0] !== undefined){
                     this.inner.val (arguments[0]);
                     return this;
                 }else{
@@ -312,15 +293,25 @@ KISSY.add(function (S, Calendar) {
             /**
              *  node接口中，attr ,data都只允许获得自定义属性
              */
-            S.each(('data removeData').split(' '), function (fn) {
-                SafeNodeList.prototype[ fn] = function (sel, name, value) {
-                    this.inner[fn](query(sel), name, cajaAFTB.untame(value));
+            SafeNodeList.prototype.data = function (name, value) {
+                if (value === undefined) {
+                    return this.inner.data(name);
+                } else {
+                    this.inner.data(name, cajaAFTB.untame(value));
                     return this;
-                };
-            });
-            SafeNodeList.prototype.hasData = function (sel, name, value) {
-                return this.inner.hasData(query(sel), name, cajaAFTB.untame(value));
+                }
             };
+
+            SafeNodeList.prototype.removeData = function (name) {
+                this.inner.removeData(name)
+                return this;
+            };
+
+
+            SafeNodeList.prototype.hasData = function ( name, value) {
+                return this.inner.hasData(name, cajaAFTB.untame(value));
+            };
+
             SafeNodeList.prototype.add = function (sel) {
                 if(sel.inner){
                     return new SafeNodeList(this.inner.add(sel.inner))
@@ -344,14 +335,30 @@ KISSY.add(function (S, Calendar) {
                 }
             };
 
-            S.each(('attr removeAttr').split(' '), function (fn) {
-                SafeNodeList.prototype[ fn] = function (sel, name, value) {
-                    if (S.isString(name) && S.startsWith(name, 'data-')) {
-                        this.inner[fn](query(sel), name, cajaAFTB.untame(value));
+
+            SafeNodeList.prototype.attr = function (name, value) {
+                if (S.startsWith(name, 'data-')) {
+                    if (undefined === value) {
+                        return this.inner.attr(name);
+                    } else {
+                        this.inner.attr(name, value);
                         return this;
                     }
-                };
-            });
+                } else {
+                    S.log('data-开头的伪属性才被支持!')
+                }
+            };
+
+            SafeNodeList.prototype.removeAttr = function (name) {
+                if (S.startsWith(name, 'data-')) {
+                    this.inner.removeAttr(name);
+                    return this;
+                } else {
+                    S.log('data-开头的伪属性才被支持!')
+                }
+            };
+
+
             SafeNodeList.prototype.hasAttr = function (sel, name, value) {
                 if (S.isString(name) && S.startsWith(name, 'data-')) {
                     return this.inner.hasAttr(query(sel), name, cajaAFTB.untame(value));
@@ -376,8 +383,8 @@ KISSY.add(function (S, Calendar) {
             SafeNodeList.prototype.len = function () {
                 return this.inner.length;
             };
-            SafeNodeList.prototype.scrollTop = function () {
-                return this.inner.scrollTop()
+            SafeNodeList.prototype.scrollTop = function (a) {
+                return this.inner.scrollTop(a)
             };
             SafeNodeList.prototype.innerWidth  = function () {
                 return this.inner.innerWidth ()
@@ -419,14 +426,14 @@ KISSY.add(function (S, Calendar) {
                 }
 
             };
-            SafeNodeList.prototype.scrollLeft = function () {
-                return this.inner.scrollLeft()
+            SafeNodeList.prototype.scrollLeft = function (a) {
+                return this.inner.scrollLeft(a)
             };
-            SafeNodeList.prototype.height = function () {
-                return this.inner.height()
+            SafeNodeList.prototype.height = function (a) {
+                return this.inner.height(a)
             };
-            SafeNodeList.prototype.width = function () {
-                return this.inner.width()
+            SafeNodeList.prototype.width = function (a) {
+                return this.inner.width(a)
             };
 
             SafeNodeList.prototype.fire = function () {
@@ -473,8 +480,7 @@ KISSY.add(function (S, Calendar) {
                 return  this.inner.equals(param.inner);
             };
             SafeNodeList.prototype.all = function (param) {
-                this.inner.all(param);
-                return this;
+                return new SafeNodeList(this.inner.all(param));
             };
             SafeNodeList.prototype.end = function () {
                 this.inner.end();
@@ -624,7 +630,10 @@ KISSY.add(function (S, Calendar) {
 
                     var url = untamedcfg.url;
 
-                    url = cajaAFTB.rewriteURL(url, null, null, {XML_ATTR: "href"});
+                    if(url.charAt(0)!=="/"){
+                        url = cajaAFTB.rewriteURL(url, null, null, {XML_ATTR: "href"});
+                    }
+
 
                     //这里处理下，目前只支持json或者jsonp的形式
                     if (!('json' === untamedcfg.dataType || 'jsonp' === untamedcfg.dataType)) {

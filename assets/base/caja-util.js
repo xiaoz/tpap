@@ -88,6 +88,11 @@
             return uri;
         }
 
+        //same to img.src
+        if( undefined !== hints.CSS_PROP){
+            return uri;
+        }
+
         var protocolRex = /^http[s]?:\/\//;
         //not start with http or https protocol
         if (0 === uri.length || !(protocolRex.test(uri))) {

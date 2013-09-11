@@ -1,2 +1,2 @@
-/*! caja-kissy 2013-09-06 */
-KISSY.config({debug:!0,packages:[{name:"openjs",tag:"20130527",path:"../../assets",charset:"utf-8"}]}),KISSY.ready(function(){KISSY.use("sizzle,"+cajaConfig.modules||"",function(t){var n=t.makeArray(arguments);n.splice(0,2),TShop.Balcony.setup(n)})});
+/*! caja-kissy 2013-09-10 */
+KISSY.config({debug:!0,packages:[{name:"openjs",tag:"20130527",path:"../../assets",charset:"gbk"}]}),KISSY.ready(function(){KISSY.use("sizzle,"+cajaConfig.modules||"",function(t){var n=t.makeArray(arguments);n.splice(0,2),TShop.Balcony.setup(n)})});

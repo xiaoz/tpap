@@ -49,9 +49,6 @@ KISSY.add(function (S) {
             });
         })();
 
-
-
-
         //触发scroll
         (function () {
             GS.fireListener.Fncs['windowScroll'] = function(config){
@@ -80,7 +77,6 @@ KISSY.add(function (S) {
                 }
             });
         })();
-
 
         //提供上传功能
         (function () {
@@ -165,6 +161,10 @@ KISSY.add(function (S) {
 
         })();
 
+        GS = frameGroup.markReadOnlyRecord(GS);
+        frameGroup.markFunction(GS.addListener);
+        frameGroup.markFunction(GS.fireListener);
+        var tameGS = frameGroup.tame(GS);
         /**
          * @param context 上下文
          * @param context.mod 沙箱的模块范围，所有操作必须限定到模块范围之内去执行
@@ -172,13 +172,10 @@ KISSY.add(function (S) {
          * @return {Object} 实际的组件对象
          */
         return function (context) {
-            GS = frameGroup.markReadOnlyRecord(GS);
-            frameGroup.markFunction(GS.addListener);
-            frameGroup.markFunction(GS.fireListener);
 
             //最终需要返回给
             return {
-                GS: frameGroup.tame(GS)
+                GS: tameGS
             }
         }
 

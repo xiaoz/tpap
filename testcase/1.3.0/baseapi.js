@@ -1,6 +1,10 @@
-KISSY.all('div').each(function(a,b){
-        console.log(a.addClass('abc'),b);
-})
+
+var t1 = KISSY.DOM.get('.t1');
+
+t1.style.color= "red";
+t1.style.WebkitTransform = 'rotate(34deg)';
+console.log(t1.style.filter);
+
 
 describe('对象基本方法和字符串测试', function () {
 
@@ -497,3 +501,17 @@ describe('基本的语言测试', function () {
     });
 
 })
+var url="http://onlineshow.taobaoapps.net/services/showdata.php";
+console.log(KISSY.io);
+KISSY.io({
+    type: "get",
+    async: false,
+    data: {"usID":"6aa06128b61b44eb8bcf797d6db2d3f9","created":lastcreate,"nick":nick},
+    url: url,
+    dataType: "jsonp",
+    jsonp: "callback",
+    jsonpCallback:"docallback",
+    success: function(getdata){
+        KISSY.alert(getdata);
+    }
+});

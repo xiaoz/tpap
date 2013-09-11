@@ -9,8 +9,10 @@
 <div id="dom-test" data-componentid="uniqueSign" class="J_TScriptedModule">
     <div class='t1'>
         <a class='t3'>1111</a>
+        <a class='t3'>1111</a>
     </div>
-
+    <select class="orderlist" style="width:100%" data-attr="2222"></select>
+    <input type="text" value="aaaaaaaaaa" name="dfdff"/>
     <div class="top-authbtn-container top-login-btn-container"></div>
     <!--    <div id="mapDiv" style="width:800px;height:600px"></div>-->
     <a>test1</a>

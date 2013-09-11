@@ -142,5 +142,5 @@ KISSY.add(function (S, LineChart, BarChart, PieChart) {
     }
     return init;
 }, {
-    requires: ['gallery/kcharts/1.1/linechart/index', 'gallery/kcharts/1.1/barchart/index', 'gallery/kcharts/1.1/piechart/index']
+    requires: ['gallery/kcharts/1.2/linechart/index', 'gallery/kcharts/1.2/barchart/index', 'gallery/kcharts/1.2/piechart/index']
 });
