@@ -4,14 +4,14 @@ console.log(KISSY.KCharts.LineChart)
 var linechart = KISSY.KCharts.LineChart({
     renderTo:".my",
     title:{
-        content:"1ÖÜÏû·Ñ¼ÇÂ¼"
+        content:"1å‘¨æ¶ˆè´¹è®°å½•"
     },
     anim:{},
     subTitle:{
         content:"week fee record"
     },
     xAxis: {
-        text:['ĞÇÆÚÒ»','ĞÇÆÚ¶ş','ĞÇÆÚÈı','ĞÇÆÚËÄ','ĞÇÆÚÎå','ĞÇÆÚÁù','ĞÇÆÚÈÕ']
+        text:['æ˜ŸæœŸä¸€','æ˜ŸæœŸäºŒ','æ˜ŸæœŸä¸‰','æ˜ŸæœŸå››','æ˜ŸæœŸäº”','æ˜ŸæœŸå…­','æ˜ŸæœŸæ—¥']
     },
     yAxis:{
         min:0
@@ -21,6 +21,6 @@ var linechart = KISSY.KCharts.LineChart({
             data:[100,4000,200,400,144,234,700]
         }],
     tip:{
-        template:"×ÜÖ§³ö£ºÄ£°å:Y Ôª"
+        template:"æ€»æ”¯å‡ºï¼šæ¨¡æ¿:Y å…ƒ"
     }
 });

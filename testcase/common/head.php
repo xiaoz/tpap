@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gbk">
+<meta charset="utf-8">
 <title></title>
 <script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js"></script>
 <script type="text/javascript" src="http://a.tbcdn.cn/apps/taesite/balcony/core/r4000/caja/caja-min.js"></script>

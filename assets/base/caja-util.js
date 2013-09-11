@@ -1,5 +1,5 @@
 /**
- * @fileOverview 提供untame和rewriteURL功能
+ * @fileOverview 鎻愪緵untame鍜宺ewriteURL鍔熻兘
  * @author shiba<shiba@taobao.com>
  */
 ;

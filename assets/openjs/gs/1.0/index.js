@@ -1,5 +1,5 @@
 /**
- * @fileOverview gs×é¼şµÄ°²È«ÊÊÅäÆ÷
+ * @fileOverview gsç»„ä»¶çš„å®‰å…¨é€‚é…å™¨
  * @depends
  */
 KISSY.add(function (S) {
@@ -7,13 +7,13 @@ KISSY.add(function (S) {
         Event = S.Event;
 
     /**
-     * Ìá¹©Ò»¸öinit·½·¨£¬Ãû×ÖÈÎÈ¡£¬×îºóÄ£¿éreturn¼´¿É¡£ ÓÃÀ´³õÊ¼»¯ÊÊÅäÆ÷
-     * ³õÊ¼»¯·½·¨ĞèÒª·µ»ØÒ»¸öº¯Êı£¬ÓÃÀ´ÎªÃ¿¸öÉ³Ïä»·¾³Ìá¹©ÊÊÅä¶ÔÏó¡£
-     * ps: Ò³ÃæÖĞ¿ÉÄÜ»áÓĞ¶à¸ö°²È«É³Ïä»·¾³¡£init·½·¨ÄÚÖ´ĞĞµÄ¿ÉÒÔÀí½âÎªËùÓĞÉ³Ïä¹²ÏíµÄÒ»Ğ©ÄÚÈİ¶ÔÏó£¬Ö÷ÒªÌá¹©×îÔ­Ê¼µÄ°²È«ÊÊÅä¶ÔÏóºÍ·½·¨¡£(Ö´ĞĞÒ»´Î,ËùÓĞÉ³Ïä¹²Ïí)
-     *     init·µ»ØµÄº¯Êı¿ÉÒÔÀí½âÊÇÎªÃ¿¸öÉ³ÏäÌá¹©µÄ°²È«ÊÊÅä¶ÔÏó¡£(Ö´ĞĞ¶à´Î£¬Ã¿¸öÉ³Ïä¶Ô¶ÔÏóµÄ²Ù×÷²»Ó°ÏìÆäËûÉ³Ïä)
-     *     ×Ü½á£º¿ÉÒÔÀí½âÎªKISSYÔÚframeGroup³õÊ¼»¯µÄÊ±ºòÊÇÒ»¸ö¶ÔÏó£¬È»ºó»ácopy¶à·İ£¬·Ö±ğ·Åµ½²»Í¬µÄÉ³Ïä»·¾³ÖĞÈ¥Ö´ĞĞ¡£Ã¿¸öcopyÏà»¥Ö®¼ä²»Ó°Ïì
-     * @param frameGroup Ò³ÃæÖĞµÄÉ³Ïä»·¾³£¬frame¼´ÎªÉ³Ïä£¬frameGroupÎªÉ³Ïä×é¡£É³ÏäµÄ¹«¹²»·¾³
-     * @returns {Function} ¹¤³§»ñÈ¡Êµ¼ÊµÄÊÊÅä¶ÔÏó
+     * æä¾›ä¸€ä¸ªinitæ–¹æ³•ï¼Œåå­—ä»»å–ï¼Œæœ€åæ¨¡å—returnå³å¯ã€‚ ç”¨æ¥åˆå§‹åŒ–é€‚é…å™¨
+     * åˆå§‹åŒ–æ–¹æ³•éœ€è¦è¿”å›ä¸€ä¸ªå‡½æ•°ï¼Œç”¨æ¥ä¸ºæ¯ä¸ªæ²™ç®±ç¯å¢ƒæä¾›é€‚é…å¯¹è±¡ã€‚
+     * ps: é¡µé¢ä¸­å¯èƒ½ä¼šæœ‰å¤šä¸ªå®‰å…¨æ²™ç®±ç¯å¢ƒã€‚initæ–¹æ³•å†…æ‰§è¡Œçš„å¯ä»¥ç†è§£ä¸ºæ‰€æœ‰æ²™ç®±å…±äº«çš„ä¸€äº›å†…å®¹å¯¹è±¡ï¼Œä¸»è¦æä¾›æœ€åŸå§‹çš„å®‰å…¨é€‚é…å¯¹è±¡å’Œæ–¹æ³•ã€‚(æ‰§è¡Œä¸€æ¬¡,æ‰€æœ‰æ²™ç®±å…±äº«)
+     *     initè¿”å›çš„å‡½æ•°å¯ä»¥ç†è§£æ˜¯ä¸ºæ¯ä¸ªæ²™ç®±æä¾›çš„å®‰å…¨é€‚é…å¯¹è±¡ã€‚(æ‰§è¡Œå¤šæ¬¡ï¼Œæ¯ä¸ªæ²™ç®±å¯¹å¯¹è±¡çš„æ“ä½œä¸å½±å“å…¶ä»–æ²™ç®±)
+     *     æ€»ç»“ï¼šå¯ä»¥ç†è§£ä¸ºKISSYåœ¨frameGroupåˆå§‹åŒ–çš„æ—¶å€™æ˜¯ä¸€ä¸ªå¯¹è±¡ï¼Œç„¶åä¼šcopyå¤šä»½ï¼Œåˆ†åˆ«æ”¾åˆ°ä¸åŒçš„æ²™ç®±ç¯å¢ƒä¸­å»æ‰§è¡Œã€‚æ¯ä¸ªcopyç›¸äº’ä¹‹é—´ä¸å½±å“
+     * @param frameGroup é¡µé¢ä¸­çš„æ²™ç®±ç¯å¢ƒï¼Œframeå³ä¸ºæ²™ç®±ï¼ŒframeGroupä¸ºæ²™ç®±ç»„ã€‚æ²™ç®±çš„å…¬å…±ç¯å¢ƒ
+     * @returns {Function} å·¥å‚è·å–å®é™…çš„é€‚é…å¯¹è±¡
      */
     function init(frameGroup) {
         var GS = {};
@@ -32,7 +32,7 @@ KISSY.add(function (S) {
         };
         GS.fireListener.Fncs = [];
 
-        //¼àÌıÏÂscrollÊÂ¼ş
+        //ç›‘å¬ä¸‹scrolläº‹ä»¶
         (function () {
             Event.on(window, 'scroll', function (e) {
                 var event = {
@@ -49,7 +49,7 @@ KISSY.add(function (S) {
             });
         })();
 
-        //´¥·¢scroll
+        //è§¦å‘scroll
         (function () {
             GS.fireListener.Fncs['windowScroll'] = function(config){
                 config.props = config.props || {};
@@ -60,7 +60,7 @@ KISSY.add(function (S) {
             }
         })();
 
-        //¼àÌıresize
+        //ç›‘å¬resize
         (function () {
             Event.on(window, 'resize', function (e) {
                 var event = {
@@ -78,15 +78,15 @@ KISSY.add(function (S) {
             });
         })();
 
-        //Ìá¹©ÉÏ´«¹¦ÄÜ
+        //æä¾›ä¸Šä¼ åŠŸèƒ½
         (function () {
-            var genTokenid = "#J_TCajaGenToken"; //Ò³ÃæÁÙÊ±²úÉútokenµÄid±êÊ¾
+            var genTokenid = "#J_TCajaGenToken"; //é¡µé¢ä¸´æ—¶äº§ç”Ÿtokençš„idæ ‡ç¤º
             var targetId = "tempCajaIframe";
 
             /**
-             * ¹¹ÔìÒ»¸öiframeºÍform
-             * @param url formĞèÒªÌá½»µÄurl
-             * @param token formÖĞµÄÑéÖ¤µØÖ·
+             * æ„é€ ä¸€ä¸ªiframeå’Œform
+             * @param url forméœ€è¦æäº¤çš„url
+             * @param token formä¸­çš„éªŒè¯åœ°å€
              * @returns {{form: void, iframe: void}}
              */
             function construIframeForm(url, token) {
@@ -108,7 +108,7 @@ KISSY.add(function (S) {
 
 
             /**
-             * ÎªÒ³ÃæÖ¸¶¨¹³×Ó×¢²áÊÂ¼ş´¦Àí³ÌĞò
+             * ä¸ºé¡µé¢æŒ‡å®šé’©å­æ³¨å†Œäº‹ä»¶å¤„ç†ç¨‹åº
              */
             Event.delegate(document, 'change', 'input.J_TCajaUploadImg', function (e) {
                 var tg = e.target;
@@ -123,11 +123,11 @@ KISSY.add(function (S) {
                 obj.form.submit();
                 /*   },
                  error: function () {
-                 alert('·şÎñ¶Ë³ö´í£¬token²úÉúÊ§°Ü! ÕâÊÇ²»¿ÉÒÔÀí½âµÄÊÂÇé.');
+                 alert('æœåŠ¡ç«¯å‡ºé”™ï¼Œtokenäº§ç”Ÿå¤±è´¥! è¿™æ˜¯ä¸å¯ä»¥ç†è§£çš„äº‹æƒ….');
                  }
                  });*/
 
-                //¿ª·¢Õß×¢²áµÄÊÂ¼ş£¬º¯Êıµ÷ÓÃ
+                //å¼€å‘è€…æ³¨å†Œçš„äº‹ä»¶ï¼Œå‡½æ•°è°ƒç”¨
                 var tempFunc = function (tameJSON) {
                     if (GS.addListener.Fncs['cajaupload']) {
                         for (var i = 0; i < GS.addListener.Fncs['cajaupload'].length; i++) {
@@ -137,13 +137,13 @@ KISSY.add(function (S) {
                 };
 
                 /**
-                 * ÉÏ´«Íê³Éºó£¬ÓÉiframeÄÚ²¿°ü×°º¯Êı´¥·¢µÄÊÂ¼ş
-                 * ÁÙÊ±´´½¨ÊÂ¼ş×¢²á£¬½áÊøºó»áÒÆ³ıµô
-                 * ÕâÀïÒòÎªĞèÒªÒì²½ÄÃtokenºÍÉÏ´«£¬ËùÒÔÃ¿Ò»´ÎÖ»ÄÜÉÏ´«Ò»¸öÎÄ¼ş
-                 * todo ºóÃæÔö¼Ó×´Ì¬µÄÅĞ¶Ï
+                 * ä¸Šä¼ å®Œæˆåï¼Œç”±iframeå†…éƒ¨åŒ…è£…å‡½æ•°è§¦å‘çš„äº‹ä»¶
+                 * ä¸´æ—¶åˆ›å»ºäº‹ä»¶æ³¨å†Œï¼Œç»“æŸåä¼šç§»é™¤æ‰
+                 * è¿™é‡Œå› ä¸ºéœ€è¦å¼‚æ­¥æ‹¿tokenå’Œä¸Šä¼ ï¼Œæ‰€ä»¥æ¯ä¸€æ¬¡åªèƒ½ä¸Šä¼ ä¸€ä¸ªæ–‡ä»¶
+                 * todo åé¢å¢åŠ çŠ¶æ€çš„åˆ¤æ–­
                  */
                 Event.on(window, 'cajaupload', function (json) {
-                    //caja ·â×°·µ»ØÊı¾İ²¢ÇÒµ÷ÓÃ
+                    //caja å°è£…è¿”å›æ•°æ®å¹¶ä¸”è°ƒç”¨
                     json = {
                         content: json.content
                     }
@@ -151,7 +151,7 @@ KISSY.add(function (S) {
                     var tameJSON = frameGroup.tame(json);
                     tempFunc(tameJSON);
 
-                    //´¦Àíºó£¬Çå³şÁÙÊ±Êı¾İ
+                    //å¤„ç†åï¼Œæ¸…æ¥šä¸´æ—¶æ•°æ®
                     Event.remove(window, 'cajaupload');
                     DOM.remove(obj.iframe);
                     DOM.remove(obj.form);
@@ -166,14 +166,14 @@ KISSY.add(function (S) {
         frameGroup.markFunction(GS.fireListener);
         var tameGS = frameGroup.tame(GS);
         /**
-         * @param context ÉÏÏÂÎÄ
-         * @param context.mod É³ÏäµÄÄ£¿é·¶Î§£¬ËùÓĞ²Ù×÷±ØĞëÏŞ¶¨µ½Ä£¿é·¶Î§Ö®ÄÚÈ¥Ö´ĞĞ
-         * @param context.frame µ¥¸öÄ£¿éµÄÉ³Ïä
-         * @return {Object} Êµ¼ÊµÄ×é¼ş¶ÔÏó
+         * @param context ä¸Šä¸‹æ–‡
+         * @param context.mod æ²™ç®±çš„æ¨¡å—èŒƒå›´ï¼Œæ‰€æœ‰æ“ä½œå¿…é¡»é™å®šåˆ°æ¨¡å—èŒƒå›´ä¹‹å†…å»æ‰§è¡Œ
+         * @param context.frame å•ä¸ªæ¨¡å—çš„æ²™ç®±
+         * @return {Object} å®é™…çš„ç»„ä»¶å¯¹è±¡
          */
         return function (context) {
 
-            //×îÖÕĞèÒª·µ»Ø¸ø
+            //æœ€ç»ˆéœ€è¦è¿”å›ç»™
             return {
                 GS: tameGS
             }

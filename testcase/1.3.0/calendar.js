@@ -1,4 +1,4 @@
-var Calendar = KISSY.Calendar;//日历组件默认在KISSY的命名空间下
+var Calendar = KISSY.Calendar;//鏃ュ巻缁勪欢榛樿鍦↘ISSY鐨勫懡鍚嶇┖闂翠笅
 var cal = new Calendar('.calendar', {
         popup: true,
         minDate: new Date()

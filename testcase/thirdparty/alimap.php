@@ -9,15 +9,15 @@
 
 <script>
 
-    cajaConfig={//ÅäÖÃÏÂÄãĞèÒªÒıÈëµÄÄ£¿éÃû³Æ£¬×îºó»á±»useµ½
+    cajaConfig={//é…ç½®ä¸‹ä½ éœ€è¦å¼•å…¥çš„æ¨¡å—åç§°ï¼Œæœ€åä¼šè¢«useåˆ°
         modules:"openjs/alimap/1.0/index"
     }
 </script>
 
 
-    <!--ÕâÀïÊÇ½«×Ô¼ºµÄjsÈÃ·şÎñ¶Ë±àÒëÒ»ÏÂ£¬ÅäÖÃÏÂ·şÎñ¶ËµÄphpÂ·¾¶ºÍ×Ô¼ºµÄjs¼´¿É£¬×¢ÒâÂ·¾¶-->
+    <!--è¿™é‡Œæ˜¯å°†è‡ªå·±çš„jsè®©æœåŠ¡ç«¯ç¼–è¯‘ä¸€ä¸‹ï¼Œé…ç½®ä¸‹æœåŠ¡ç«¯çš„phpè·¯å¾„å’Œè‡ªå·±çš„jså³å¯ï¼Œæ³¨æ„è·¯å¾„-->
 <?
-$jsurl="testcase/thirdparty/alimap.js";//×¢ÒâÂ·¾¶
-$jsservice="../common/cajoled_service.php";//×¢ÒâÂ·¾¶
-include("../common/foot.php");//ÒıÈëfoot
+$jsurl="testcase/thirdparty/alimap.js";//æ³¨æ„è·¯å¾„
+$jsservice="../common/cajoled_service.php";//æ³¨æ„è·¯å¾„
+include("../common/foot.php");//å¼•å…¥foot
 ?>

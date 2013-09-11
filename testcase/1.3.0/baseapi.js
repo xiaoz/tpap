@@ -6,13 +6,13 @@ t1.style.WebkitTransform = 'rotate(34deg)';
 console.log(t1.style.filter);
 
 
-describe('¶ÔÏó»ù±¾·½·¨ºÍ×Ö·û´®²âÊÔ', function () {
+describe('å¯¹è±¡åŸºæœ¬æ–¹æ³•å’Œå­—ç¬¦ä¸²æµ‹è¯•', function () {
 
-    it('¶ÔÏóµÄÊôĞÔºÍº¯Êı²âÊÔ', function () {
+    it('å¯¹è±¡çš„å±æ€§å’Œå‡½æ•°æµ‹è¯•', function () {
 
         var arr = {a: 1, b: 2};
-        expect('hasOwnProperty ¼ì²éº¬ÓĞÄ³¸öÊôĞÔ', arr.hasOwnProperty("b") == true, 1);
-        expect('hasOwnProperty ¼ì²é²»º¬ÓĞÄ³¸öÊôĞÔ', arr.hasOwnProperty("c") == false, 2)
+        expect('hasOwnProperty æ£€æŸ¥å«æœ‰æŸä¸ªå±æ€§', arr.hasOwnProperty("b") == true, 1);
+        expect('hasOwnProperty æ£€æŸ¥ä¸å«æœ‰æŸä¸ªå±æ€§', arr.hasOwnProperty("c") == false, 2)
 
         function sustract(a, b) {
             var result = a - b;
@@ -20,7 +20,7 @@ describe('¶ÔÏó»ù±¾·½·¨ºÍ×Ö·û´®²âÊÔ', function () {
         }
 
         var res = sustract(7, 5);
-        expect('function º¯Êı½¨Á¢ºÍµ÷ÓÃ²âÊÔ', res == 2, 3);
+        expect('function å‡½æ•°å»ºç«‹å’Œè°ƒç”¨æµ‹è¯•', res == 2, 3);
 
         function callapplytest(c) {
             var result = this.a + this.b + c;
@@ -28,60 +28,60 @@ describe('¶ÔÏó»ù±¾·½·¨ºÍ×Ö·û´®²âÊÔ', function () {
         }
 
         var rescall = callapplytest.call({a: 3, b: 4}, 5);
-        expect('call ¿ÉÒÔÖ±½Ó´«µİ²ÎÊıÁĞ±í±ÈÈç5', rescall == 12, 2);
+        expect('call å¯ä»¥ç›´æ¥ä¼ é€’å‚æ•°åˆ—è¡¨æ¯”å¦‚5', rescall == 12, 2);
 
         var resapply = callapplytest.apply({a: 3, b: 4}, [5]);
-        expect('apply ĞèÒª°ü×°³ÉÊı×é²ÅÄÜ´«µİ', resapply == 12, 3)
+        expect('apply éœ€è¦åŒ…è£…æˆæ•°ç»„æ‰èƒ½ä¼ é€’', resapply == 12, 3)
     });
 
-    it('¶ÔÏóµÄ×Ö·û´®²âÊÔ', function () {
+    it('å¯¹è±¡çš„å­—ç¬¦ä¸²æµ‹è¯•', function () {
         var zifu = String.fromCharCode(65);
-        expect('String.fromCharCode unicode×ª»»³ÉÏàÓ¦µÄÖµ', zifu == "A", 1);
+        expect('String.fromCharCode unicodeè½¬æ¢æˆç›¸åº”çš„å€¼', zifu == "A", 1);
 
         var str = "abcde";
         var zifu = str.charAt(2);
-        expect('charAt µÃµ½×Ö·û´®ÖĞÖ¸¶¨Ë÷ÒıÖµµÄ×Ö·û', zifu == "c", 2);
+        expect('charAt å¾—åˆ°å­—ç¬¦ä¸²ä¸­æŒ‡å®šç´¢å¼•å€¼çš„å­—ç¬¦', zifu == "c", 2);
         var zifucode = str.charCodeAt(2);
-        expect('charCodeAt µÃµ½×Ö·û´®ÖĞÖ¸¶¨Ë÷ÒıÖµµÄ×Ö·ûµÄunicode', zifucode == 99, 3);
+        expect('charCodeAt å¾—åˆ°å­—ç¬¦ä¸²ä¸­æŒ‡å®šç´¢å¼•å€¼çš„å­—ç¬¦çš„unicode', zifucode == 99, 3);
 
-        //Õâ¸ö×Ö·û´®Á¬½Ó²»²âÁËÂğ£¿
+        //è¿™ä¸ªå­—ç¬¦ä¸²è¿æ¥ä¸æµ‹äº†å—ï¼Ÿ
         var str = "abc" + "123";
-        expect('+ ×Ö·û´®Á¬½Ó', str == "abc123", 4);
+        expect('+ å­—ç¬¦ä¸²è¿æ¥', str == "abc123", 4);
 
         var str = "ab124ab4ab";
         var flag = str.indexOf("124");
-        expect('indexOf ×Ó´®³öÏÖµÄµÚÒ»¸öÎ»ÖÃ', flag == 2, 5);
+        expect('indexOf å­ä¸²å‡ºç°çš„ç¬¬ä¸€ä¸ªä½ç½®', flag == 2, 5);
 
         var flag = str.lastIndexOf("4a");
-        expect('lastIndeOf ×Ó´®³öÏÖµÄ×îºóÒ»´ÎµÄÎ»ÖÃ', flag == 7, 6);
+        expect('lastIndeOf å­ä¸²å‡ºç°çš„æœ€åä¸€æ¬¡çš„ä½ç½®', flag == 7, 6);
 
         var str = "ABCD";
-        expect('toLowerCase ×ª»»³ÉĞ¡Ğ´', str.toLowerCase() == "abcd", 7);
+        expect('toLowerCase è½¬æ¢æˆå°å†™', str.toLowerCase() == "abcd", 7);
 
         var str = "abcd"
-        expect('toUpperCase ×ª»»³É´óĞ´', str.toUpperCase() == "ABCD", 8);
+        expect('toUpperCase è½¬æ¢æˆå¤§å†™', str.toUpperCase() == "ABCD", 8);
 
-        var str = "1 ¼Ó 2 µÈÓÚ 3";
+        var str = "1 åŠ  2 ç­‰äº 3";
         var strexp = ["1", "2", "3"];
-        expect('match ÕıÔòÆ¥Åä' + str.match(/\d+/g), str.match(/\d+/g)[0] == strexp[0], 9);
-        var s = "TaoBao ¿ª·Å js";
-        expect('search ·µ»ØÆ¥ÅäµÄÆğÊ¼Î»ÖÃ', s.search(/t.o/i) == 0, 10);
+        expect('match æ­£åˆ™åŒ¹é…' + str.match(/\d+/g), str.match(/\d+/g)[0] == strexp[0], 9);
+        var s = "TaoBao å¼€æ”¾ js";
+        expect('search è¿”å›åŒ¹é…çš„èµ·å§‹ä½ç½®', s.search(/t.o/i) == 0, 10);
 
 
         var str = "1,2,3,4,5";
         var strexp = ["1", "2", "3", "4", "5"];
-        expect('split ¸ù¾İ²ÎÊı·Ö¸î×Ö·û´®', str.split(",").toString() == strexp, 11);
+        expect('split æ ¹æ®å‚æ•°åˆ†å‰²å­—ç¬¦ä¸²', str.split(",").toString() == strexp, 11);
 
         var str = "1::2:3:4:5";
         var strexp1 = ["1", "2", "3", "4", "5"];
-        expect('split ¸ù¾İÕıÔò·Ö¸î×Ö·û´®', str.split(/:+/).toString() == strexp1, 12);
+        expect('split æ ¹æ®æ­£åˆ™åˆ†å‰²å­—ç¬¦ä¸²', str.split(/:+/).toString() == strexp1, 12);
         var str = "1::2:3:4:5";
         var strexp2 = ["1", ":", "", ":", "2", ":", "3", ":", "4", ":", "5"];
-        expect('split Æ¥ÅäµÄ·Ö¸ô·ûÒ²°üº¬ÔÚ·µ»Ø½á¹ûÖĞ', str.split(/(:)/).toString() == strexp2, 13);
+        expect('split åŒ¹é…çš„åˆ†éš”ç¬¦ä¹ŸåŒ…å«åœ¨è¿”å›ç»“æœä¸­', str.split(/(:)/).toString() == strexp2, 13);
 
         var x = "   ssd  ";
-        expect('trim ÉúĞ§ µ÷ÓÃ trim È¥µô×Ö·û´®Á½±ßµÄ¿Õ¸ñ', x.trim() === "ssd", 14);
-        expect('trim ×Ö·û´®Ã»±ä µ÷ÓÃ trim È¥µô×Ö·û´®Á½±ßµÄ¿Õ¸ñ', x === "   ssd  ", 15)
+        expect('trim ç”Ÿæ•ˆ è°ƒç”¨ trim å»æ‰å­—ç¬¦ä¸²ä¸¤è¾¹çš„ç©ºæ ¼', x.trim() === "ssd", 14);
+        expect('trim å­—ç¬¦ä¸²æ²¡å˜ è°ƒç”¨ trim å»æ‰å­—ç¬¦ä¸²ä¸¤è¾¹çš„ç©ºæ ¼', x === "   ssd  ", 15)
 
         var x = "abc";
         x = x.replace("a", '');
@@ -89,169 +89,169 @@ describe('¶ÔÏó»ù±¾·½·¨ºÍ×Ö·û´®²âÊÔ', function () {
 
     });
 
-    it('¶ÔÏóµÄÊı×Ö²âÊÔ', function () {
-        expect("Number.POSITIVE_INFINITY ÔËËãÕıÒç³öÊ±µÄÖµ", 1 / 0 === Number.POSITIVE_INFINITY, 1)
-        expect('Number.NEFATIVE_INFINITY ÔËËã¸ºÒç³öÊ±µÄÖµ', -1 / 0 === Number.NEGATIVE_INFINITY, 2);
+    it('å¯¹è±¡çš„æ•°å­—æµ‹è¯•', function () {
+        expect("Number.POSITIVE_INFINITY è¿ç®—æ­£æº¢å‡ºæ—¶çš„å€¼", 1 / 0 === Number.POSITIVE_INFINITY, 1)
+        expect('Number.NEFATIVE_INFINITY è¿ç®—è´Ÿæº¢å‡ºæ—¶çš„å€¼', -1 / 0 === Number.NEGATIVE_INFINITY, 2);
 
         var num = 1234.5678;
-        expect('toFixed È¥µôĞ¡ÊıµãµÄÊı×Ö', num.toFixed() == 1235, 3);
-        expect('toFixed(2) ËÄÉáÎåÈë±£ÁôÁ½Î»', num.toFixed(2) == 1234.57, 4);
-        //ÏÂÃæÕâ¸ö²»ÖªµÀÄÄÀïÓĞÎÊÌâ
+        expect('toFixed å»æ‰å°æ•°ç‚¹çš„æ•°å­—', num.toFixed() == 1235, 3);
+        expect('toFixed(2) å››èˆäº”å…¥ä¿ç•™ä¸¤ä½', num.toFixed(2) == 1234.57, 4);
+        //ä¸‹é¢è¿™ä¸ªä¸çŸ¥é“å“ªé‡Œæœ‰é—®é¢˜
         var num = 1.23e+5;
-        expect('toFixed(2) Ã»ÓĞĞ¡ÊıµÄ£¬Ğ¡Êıµãºó²¹×ãÁ½Î»', num.toFixed(2) == 123000.00, 5);
+        expect('toFixed(2) æ²¡æœ‰å°æ•°çš„ï¼Œå°æ•°ç‚¹åè¡¥è¶³ä¸¤ä½', num.toFixed(2) == 123000.00, 5);
         var num = 1.23e-5
-        expect('toFixed(2) Ğ¡ÊıµãºóÃæºÃ¶àÎ»£¬Ö»±£ÁôĞ¡ÊıµãºóÁ½Î»', num.toFixed(2) == 0.00, 6);
+        expect('toFixed(2) å°æ•°ç‚¹åé¢å¥½å¤šä½ï¼Œåªä¿ç•™å°æ•°ç‚¹åä¸¤ä½', num.toFixed(2) == 0.00, 6);
 
         var num = 12345.6789
-        expect('toPrecision£¨1£© Ô­Î»Êı´óÓÚÏŞ¶¨ÓĞĞ§Î»', num.toPrecision(1) == 10000, 7);
-        expect('toPrecision£¨5£© Ô­Î»ÊıµÈÓÚĞ¡ÊıµãÇ°µÄÎ»Êı', num.toPrecision(5) == 12346, 8);
-        expect('toPrecision(10)  Ô­Î»ÊıĞ¡ÓÚÏŞ¶¨Î»Êı²¹×ã0', num.toPrecision(10) == 12345.678900, 9)
+        expect('toPrecisionï¼ˆ1ï¼‰ åŸä½æ•°å¤§äºé™å®šæœ‰æ•ˆä½', num.toPrecision(1) == 10000, 7);
+        expect('toPrecisionï¼ˆ5ï¼‰ åŸä½æ•°ç­‰äºå°æ•°ç‚¹å‰çš„ä½æ•°', num.toPrecision(5) == 12346, 8);
+        expect('toPrecision(10)  åŸä½æ•°å°äºé™å®šä½æ•°è¡¥è¶³0', num.toPrecision(10) == 12345.678900, 9)
     });
 
-    it('MathÏà¹ØÊıÑ§ÔËËã²âÊÔ', function () {
-        expect('Math.E  »ñÈ¡E³£Á¿²âÊÔ', Math.E == 2.718281828459045, 1);
-        expect('Math.log(x) »ñÈ¡xµÄ×ÔÈ»¶ÔÊı Math.LN10 »ñÈ¡10µÄ×ÔÈ»¶ÔÊı', Math.log(10) === Math.LN10, 2);
-        expect('Math.LN2 »ñÈ¡2µÄ×ÔÈ»¶ÔÊı', Math.LN2 === Math.log(2), 3);
-        expect('Math.LOG2E 2Îªµ×eµÄ¶ÔÊı', Math.LOG2E === 1.4426950408889634, 4);
-        expect('Math.LOG10E 10Îªµ×eµÄ¶ÔÊı', Math.LOG10E === 0.4342944819032518, 5);
+    it('Mathç›¸å…³æ•°å­¦è¿ç®—æµ‹è¯•', function () {
+        expect('Math.E  è·å–Eå¸¸é‡æµ‹è¯•', Math.E == 2.718281828459045, 1);
+        expect('Math.log(x) è·å–xçš„è‡ªç„¶å¯¹æ•° Math.LN10 è·å–10çš„è‡ªç„¶å¯¹æ•°', Math.log(10) === Math.LN10, 2);
+        expect('Math.LN2 è·å–2çš„è‡ªç„¶å¯¹æ•°', Math.LN2 === Math.log(2), 3);
+        expect('Math.LOG2E 2ä¸ºåº•eçš„å¯¹æ•°', Math.LOG2E === 1.4426950408889634, 4);
+        expect('Math.LOG10E 10ä¸ºåº•eçš„å¯¹æ•°', Math.LOG10E === 0.4342944819032518, 5);
 
         expect('Math.PI ', Math.PI == 3.141592653589793, '6')
-        expect('Math.SQRT2 È¡³£Á¿¸ùºÅ2', Math.SQRT2 == 1.4142135623730951, '7')
-        expect('Math.abs ÕıÊı3È¡¾ø¶ÔÖµ', Math.abs(3) == 3, 8);
-        expect('Math.abs ¸ºÊıÈ¡¾ø¶ÔÖµ', Math.abs(-3) == 3, 9);
+        expect('Math.SQRT2 å–å¸¸é‡æ ¹å·2', Math.SQRT2 == 1.4142135623730951, '7')
+        expect('Math.abs æ­£æ•°3å–ç»å¯¹å€¼', Math.abs(3) == 3, 8);
+        expect('Math.abs è´Ÿæ•°å–ç»å¯¹å€¼', Math.abs(-3) == 3, 9);
 
-        expect('Math.cos ÇóÕıÊıÓàÏÒ', Math.cos(0.5) == 0.8775825618903728, 10);
-        expect('Math.cos Çó¸ºÊıÓàÏÒ', Math.cos(-0.5) == 0.8775825618903728, 11);
-        expect('Math.sin ÇóÕıÊıÕıÏÒ', Math.sin(0.5) == 0.479425538604203, 12);
-        expect('Math.sin Çó¸ºÊıÕıÏÒ', Math.sin(-0.5) == -0.479425538604203, 13);
-        expect('Math.tan ÇóÕıÊıÕıÇĞ', Math.tan(0.5) == 0.5463024898437905, 14);
-        expect('Math.tan Çó¸ºÊıÕıÇĞ', Math.tan(-0.5) == -0.5463024898437905, 15);
-        expect('Math.acos ·´ÓàÏÒ', Math.acos(0.5) == 1.0471975511965979, 16);
-        expect('Math.asin ·´ÕıÏÒ', Math.asin(0.5) == 0.5235987755982989, 17);
-        expect('Math.atan ·´ÕıÇĞ', Math.atan(0.5) == 0.4636476090008061, 18);
+        expect('Math.cos æ±‚æ­£æ•°ä½™å¼¦', Math.cos(0.5) == 0.8775825618903728, 10);
+        expect('Math.cos æ±‚è´Ÿæ•°ä½™å¼¦', Math.cos(-0.5) == 0.8775825618903728, 11);
+        expect('Math.sin æ±‚æ­£æ•°æ­£å¼¦', Math.sin(0.5) == 0.479425538604203, 12);
+        expect('Math.sin æ±‚è´Ÿæ•°æ­£å¼¦', Math.sin(-0.5) == -0.479425538604203, 13);
+        expect('Math.tan æ±‚æ­£æ•°æ­£åˆ‡', Math.tan(0.5) == 0.5463024898437905, 14);
+        expect('Math.tan æ±‚è´Ÿæ•°æ­£åˆ‡', Math.tan(-0.5) == -0.5463024898437905, 15);
+        expect('Math.acos åä½™å¼¦', Math.acos(0.5) == 1.0471975511965979, 16);
+        expect('Math.asin åæ­£å¼¦', Math.asin(0.5) == 0.5235987755982989, 17);
+        expect('Math.atan åæ­£åˆ‡', Math.atan(0.5) == 0.4636476090008061, 18);
 
-        expect('Math.ceil ´óÓÚ»òµÈÓÚÄ³ÊıµÄ×î½üÕûÊı', Math.ceil(0.5) == 1, 19);
-        expect('Math.floor Ğ¡ÓÚ»òµÈÓÚÄ³ÊıµÄ×î½üÕûÊı', Math.floor(0.5) == 0, 20);
-        expect('Math.pow(x,y) xµÄy´Î·½', Math.pow(2, 3) == 8, 21);
-        expect('Math.round ËÄÉáÎåÈëºóµÄÖµ', Math.round(2.3) == 2, 22);
-        expect('Math.max ×î´óÖµ', Math.max(2, 4, 3, -9) == 4, 23);
-        expect('Math.min ×îĞ¡Öµ', Math.min(2, 4, 3, -9) == -9, 24);
-        expect('Math.random ·µ»ØÒ»¸öËæ»úÊı', Math.random() !== Math.random());
+        expect('Math.ceil å¤§äºæˆ–ç­‰äºæŸæ•°çš„æœ€è¿‘æ•´æ•°', Math.ceil(0.5) == 1, 19);
+        expect('Math.floor å°äºæˆ–ç­‰äºæŸæ•°çš„æœ€è¿‘æ•´æ•°', Math.floor(0.5) == 0, 20);
+        expect('Math.pow(x,y) xçš„yæ¬¡æ–¹', Math.pow(2, 3) == 8, 21);
+        expect('Math.round å››èˆäº”å…¥åçš„å€¼', Math.round(2.3) == 2, 22);
+        expect('Math.max æœ€å¤§å€¼', Math.max(2, 4, 3, -9) == 4, 23);
+        expect('Math.min æœ€å°å€¼', Math.min(2, 4, 3, -9) == -9, 24);
+        expect('Math.random è¿”å›ä¸€ä¸ªéšæœºæ•°', Math.random() !== Math.random());
     });
 
-    it('Date»ñÈ¡Ê±¼äÖµ', function () {
-        expect('Date.UTC »ñÈ¡¸ø¶¨Ê±¼äÏà¶ÔÓÚ1970.1.1µÄºÁÃëÊı', Date.UTC(1970, 0, 1, 0, 0, 0, 1) == 1);
-        expect('date.getFullYear µÃµ½µ±Ç°Äê·İµÄËÄÎ»Êı±íÊ¾', new Date().getFullYear() == 2013, 2);
+    it('Dateè·å–æ—¶é—´å€¼', function () {
+        expect('Date.UTC è·å–ç»™å®šæ—¶é—´ç›¸å¯¹äº1970.1.1çš„æ¯«ç§’æ•°', Date.UTC(1970, 0, 1, 0, 0, 0, 1) == 1);
+        expect('date.getFullYear å¾—åˆ°å½“å‰å¹´ä»½çš„å››ä½æ•°è¡¨ç¤º', new Date().getFullYear() == 2013, 2);
 
         var dateyear = new Date();
         dateyear.setFullYear(2012);
-        expect('getYear »ñÈ¡Date¶ÔÏóµÄÄê·İ', dateyear.getFullYear() == 2012, 3);
+        expect('getYear è·å–Dateå¯¹è±¡çš„å¹´ä»½', dateyear.getFullYear() == 2012, 3);
 
         var datemonth = new Date();
         datemonth.setMonth(11);
-        expect('getMonth »ñÈ¡Date¶ÔÏóµÄÔÂ·İ', datemonth.getMonth() == 11, 4);
+        expect('getMonth è·å–Dateå¯¹è±¡çš„æœˆä»½', datemonth.getMonth() == 11, 4);
 
         var datedate = new Date();
         datedate.setDate(27);
-        expect('getDate »ñÈ¡Date¶ÔÏóµÄÈÕÆÚ', datedate.getDate() == 27, 5);
+        expect('getDate è·å–Dateå¯¹è±¡çš„æ—¥æœŸ', datedate.getDate() == 27, 5);
 
         var datehours = new Date();
         datehours.setHours(13);
-        expect('getHours »ñÈ¡Date¶ÔÏóµÄÊ±Öµ', datehours.getHours() == 13, 6);
+        expect('getHours è·å–Dateå¯¹è±¡çš„æ—¶å€¼', datehours.getHours() == 13, 6);
 
         var dateMinutes = new Date();
         dateMinutes.setMinutes(33);
-        expect('getMinutes »ñÈ¡Date¶ÔÏóµÄ·ÖÖµ', dateMinutes.getMinutes() == 33, 7);
+        expect('getMinutes è·å–Dateå¯¹è±¡çš„åˆ†å€¼', dateMinutes.getMinutes() == 33, 7);
 
         var dateSeconds = new Date();
         dateSeconds.setSeconds(54);
-        expect('getSeconds »ñÈ¡Date¶ÔÏóµÄÃëÊı', dateSeconds.getSeconds() == 54, 8);
+        expect('getSeconds è·å–Dateå¯¹è±¡çš„ç§’æ•°', dateSeconds.getSeconds() == 54, 8);
 
         var dateMilliseconds = new Date();
         dateMilliseconds.setMilliseconds(398);
-        expect('getMilliseconds »ñÈ¡Date¶ÔÏóµÄºÁÃëÊı', dateMilliseconds.getMilliseconds() == 398, 9);
+        expect('getMilliseconds è·å–Dateå¯¹è±¡çš„æ¯«ç§’æ•°', dateMilliseconds.getMilliseconds() == 398, 9);
 
         var dateUTCyear = new Date();
         dateUTCyear.setUTCFullYear(2012);
-        expect('getUTCFullYear »ñÈ¡Date¶ÔÏóµÄUTCÄê·İ', dateUTCyear.getUTCFullYear() == 2012, 10);
+        expect('getUTCFullYear è·å–Dateå¯¹è±¡çš„UTCå¹´ä»½', dateUTCyear.getUTCFullYear() == 2012, 10);
 
         var dateUTCmonth = new Date();
         datemonth.setUTCMonth(11)
-        expect('getUTCMonth »ñÈ¡Date¶ÔÏóµÄUTCÔÂ·İ' + dateUTCmonth.getUTCMonth(), typeof dateUTCmonth.getUTCMonth() === "number", 11);
+        expect('getUTCMonth è·å–Dateå¯¹è±¡çš„UTCæœˆä»½' + dateUTCmonth.getUTCMonth(), typeof dateUTCmonth.getUTCMonth() === "number", 11);
 
         var dateUTCdate = new Date();
         dateUTCdate.setUTCDate(27);
-        expect('getUTCDate »ñÈ¡Date¶ÔÏóµÄUTCÈÕÆÚ', dateUTCdate.getUTCDate() == 27, 12);
+        expect('getUTCDate è·å–Dateå¯¹è±¡çš„UTCæ—¥æœŸ', dateUTCdate.getUTCDate() == 27, 12);
 
         var dateUTChours = new Date();
         dateUTChours.setUTCHours(13);
-        expect('getUTCHours »ñÈ¡Date¶ÔÏóµÄUTCÊ±Öµ', dateUTChours.getUTCHours() == 13, 13);
+        expect('getUTCHours è·å–Dateå¯¹è±¡çš„UTCæ—¶å€¼', dateUTChours.getUTCHours() == 13, 13);
 
         var dateUTCMinutes = new Date();
         dateUTCMinutes.setUTCMinutes(33);
-        expect('getUTCMinutes »ñÈ¡Date¶ÔÏóµÄUTC·ÖÖµ', dateUTCMinutes.getUTCMinutes() == 33, 14);
+        expect('getUTCMinutes è·å–Dateå¯¹è±¡çš„UTCåˆ†å€¼', dateUTCMinutes.getUTCMinutes() == 33, 14);
 
         var dateUTCSeconds = new Date();
         dateUTCSeconds.setUTCSeconds(54);
-        expect('getUTCSeconds »ñÈ¡Date¶ÔÏóµÄUTCÃëÊı', dateUTCSeconds.getUTCSeconds() == 54, 15);
+        expect('getUTCSeconds è·å–Dateå¯¹è±¡çš„UTCç§’æ•°', dateUTCSeconds.getUTCSeconds() == 54, 15);
 
         var dateUTCMilliseconds = new Date();
         dateUTCMilliseconds.setUTCMilliseconds(398);
-        expect('getUTCMilliseconds »ñÈ¡Date¶ÔÏóµÄUTCºÁÃëÊı', dateMilliseconds.getUTCMilliseconds() == 398, 16);
+        expect('getUTCMilliseconds è·å–Dateå¯¹è±¡çš„UTCæ¯«ç§’æ•°', dateMilliseconds.getUTCMilliseconds() == 398, 16);
 
 
     });
 
-    it('RegExpÕıÔò±í´ïÊ½²âÊÔ', function () {
+    it('RegExpæ­£åˆ™è¡¨è¾¾å¼æµ‹è¯•', function () {
 
-        expect('global ²é¿´ÊÇ·ñÆ¥ÅäÁËÈ«¾ÖÄ£Ê½', /\d/g.global == true, 1);
-        expect('ignoreCase ²é¿´ÊÇ·ñÆ¥ÅäÁË´óĞ¡Ğ´Ä£Ê½', /\d/i.ignoreCase == true, 2);
-        expect('multiline ²é¿´ÊÇ·ñÆ¥ÅäÁË¶àĞĞÄ£Ê½', /\d/m.multiline == true, 3);
+        expect('global æŸ¥çœ‹æ˜¯å¦åŒ¹é…äº†å…¨å±€æ¨¡å¼', /\d/g.global == true, 1);
+        expect('ignoreCase æŸ¥çœ‹æ˜¯å¦åŒ¹é…äº†å¤§å°å†™æ¨¡å¼', /\d/i.ignoreCase == true, 2);
+        expect('multiline æŸ¥çœ‹æ˜¯å¦åŒ¹é…äº†å¤šè¡Œæ¨¡å¼', /\d/m.multiline == true, 3);
 
         var reg = /ab/g;
         reg.test("aabcde");
-        expect('lastIndex Æ¥ÅäÕıÔò±í´ïÊ½ºóÃæµÚÒ»¸ö×Ö·ûµÄÎ»ÖÃ', reg.lastIndex == 3, 4)
+        expect('lastIndex åŒ¹é…æ­£åˆ™è¡¨è¾¾å¼åé¢ç¬¬ä¸€ä¸ªå­—ç¬¦çš„ä½ç½®', reg.lastIndex == 3, 4)
 
         var reg = /(work)\w*/g;
         var result;
         while (result = reg.exec("I am working!")) {
-            expect('result[0]  Æ¥Åäµ½µÚÒ»¸ö×Ö·û´®', result[0] == "working", 5)
-            expect('result[1] Æ¥Åä·Ö×é', result[1] == "work", 6);
-            expect('result.lastIndex ÏÂÒ»´Î¿ªÊ¼Æ¥ÅäµÄÎ»ÖÃ', reg.lastIndex == 12, 8);
+            expect('result[0]  åŒ¹é…åˆ°ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²', result[0] == "working", 5)
+            expect('result[1] åŒ¹é…åˆ†ç»„', result[1] == "work", 6);
+            expect('result.lastIndex ä¸‹ä¸€æ¬¡å¼€å§‹åŒ¹é…çš„ä½ç½®', reg.lastIndex == 12, 8);
         }
 
         var reg = /like/i;
-        expect('test ÅĞ¶Ï×Ö·û´®ÊÇ·ñÆ¥Åäµ±Ç°Ä£Ê½false', reg.test("working") == false, 9);
-        expect('test ÅĞ¶Ï×Ö·û´®ÊÇ·ñÆ¥Åäµ±Ç°Ä£Ê½true', reg.test("Like everything") == true, 10)
+        expect('test åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦åŒ¹é…å½“å‰æ¨¡å¼false', reg.test("working") == false, 9);
+        expect('test åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦åŒ¹é…å½“å‰æ¨¡å¼true', reg.test("Like everything") == true, 10)
     });
 
-    it('È«¾Ö±äÁ¿', function () {
-        expect('Number µ±²ÎÊıÎª·ÇÊı×ÖÊ±·µ»ØNaN', Number("ab").toString() == NaN.toString(), 1);
-        expect('NaN ²»µÈÓÚÈÎºÎÊı×Ö', (NaN == 2) == false, 2);
-        expect('NaN ²»µÈÓÚ±¾Éí', (NaN == NaN) == false, 3);
-        expect('Infinity ÔËËãÒç³ö·µ»Ø¸ÃÖµ', (1 / 0) == Infinity, 4)
-        expect('parseInt ½«×Ö·û´®×ª»¯ÎªÕûÊıºöÂÔ×îºóµÄ×ÖÄ¸', parseInt("123ahhhh") == 123, 5);
-        expect('parseFloat ½«×Ö·û´®×ª»¯Îª¸¡µãÊıºöÂÔ×îºóµÄ×ÖÄ¸', parseFloat("123.98dhhh") == 123.98, 6);
-        expect('isNaN ÅĞ¶ÏÒ»¸ö×Ö·û´®»òÊı×ÖÊÇ·ñÊÇ·ÇNaNÊı×Ö', isNaN("12") == false && isNaN("12dd") == true, 7);
-        expect('isFinite ÅĞ¶ÏÒ»¸ö×Ö·û´®ÊÇ²»ÊÇÓĞÇîµÄ', isFinite("12") == true && isFinite(NaN) == false, 8);
-        expect('encodeURI ¶Ôurl½øĞĞ±àÂë', encodeURI("http://www.taobao.com/?arg1=1&arg2=hello world") == "http://www.taobao.com/?arg1=1&arg2=hello%20world", 9)
-        expect('decodeURI ¶Ô±àÂëºóµÄurl½øĞĞ½âÂë', decodeURI("http://www.taobao.com/?arg1=1&arg2=hello%20world") == "http://www.taobao.com/?arg1=1&arg2=hello world", 10);
-        expect('encodeURIComponent ×Ö·û±àÂë³Éutf-8', encodeURIComponent("hello ?") == "hello%20%3F", 11);
-        expect('decodeURIComponent ±»±àÂë³Éutf-8µÄ×Ö·û½âÂë', decodeURIComponent("hello%20%3f") == "hello ?", 12);
+    it('å…¨å±€å˜é‡', function () {
+        expect('Number å½“å‚æ•°ä¸ºéæ•°å­—æ—¶è¿”å›NaN', Number("ab").toString() == NaN.toString(), 1);
+        expect('NaN ä¸ç­‰äºä»»ä½•æ•°å­—', (NaN == 2) == false, 2);
+        expect('NaN ä¸ç­‰äºæœ¬èº«', (NaN == NaN) == false, 3);
+        expect('Infinity è¿ç®—æº¢å‡ºè¿”å›è¯¥å€¼', (1 / 0) == Infinity, 4)
+        expect('parseInt å°†å­—ç¬¦ä¸²è½¬åŒ–ä¸ºæ•´æ•°å¿½ç•¥æœ€åçš„å­—æ¯', parseInt("123ahhhh") == 123, 5);
+        expect('parseFloat å°†å­—ç¬¦ä¸²è½¬åŒ–ä¸ºæµ®ç‚¹æ•°å¿½ç•¥æœ€åçš„å­—æ¯', parseFloat("123.98dhhh") == 123.98, 6);
+        expect('isNaN åˆ¤æ–­ä¸€ä¸ªå­—ç¬¦ä¸²æˆ–æ•°å­—æ˜¯å¦æ˜¯éNaNæ•°å­—', isNaN("12") == false && isNaN("12dd") == true, 7);
+        expect('isFinite åˆ¤æ–­ä¸€ä¸ªå­—ç¬¦ä¸²æ˜¯ä¸æ˜¯æœ‰ç©·çš„', isFinite("12") == true && isFinite(NaN) == false, 8);
+        expect('encodeURI å¯¹urlè¿›è¡Œç¼–ç ', encodeURI("http://www.taobao.com/?arg1=1&arg2=hello world") == "http://www.taobao.com/?arg1=1&arg2=hello%20world", 9)
+        expect('decodeURI å¯¹ç¼–ç åçš„urlè¿›è¡Œè§£ç ', decodeURI("http://www.taobao.com/?arg1=1&arg2=hello%20world") == "http://www.taobao.com/?arg1=1&arg2=hello world", 10);
+        expect('encodeURIComponent å­—ç¬¦ç¼–ç æˆutf-8', encodeURIComponent("hello ?") == "hello%20%3F", 11);
+        expect('decodeURIComponent è¢«ç¼–ç æˆutf-8çš„å­—ç¬¦è§£ç ', decodeURIComponent("hello%20%3f") == "hello ?", 12);
 
     });
 });
 
-describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
+describe('åŸºæœ¬çš„è¯­è¨€æµ‹è¯•', function () {
 
-    it("Êı×éµÄÒ»Ğ©º¯Êı²âÊÔ", function () {
+    it("æ•°ç»„çš„ä¸€äº›å‡½æ•°æµ‹è¯•", function () {
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         var arr2 = [10, 11];
 
         expect('arr.length == 9', arr.length == 9, 1);
-        expect('ºÏ²¢Êı×é µ÷ÓÃ concat º¯Êı²úÉúÒ»¸öĞÂµÄºÏ²¢ºóµÄº¯Êı : ', arr.concat(arr2).length == 11 && arr.length == 9, 2);
-        expect('×ª»¯Îª×Ö·û´® £¬µ÷ÓÃ join ½«Êı×éÖĞµÄÔªËØÒÔ·Ö¸ô·ûºÏ²¢ÎªÒ»¸ö×Ö·û´® ', arr2.join(":") === "10:11", 3);
-        expect('pop µ¯³ö', arr.pop() && arr.length == 8, 4);
+        expect('åˆå¹¶æ•°ç»„ è°ƒç”¨ concat å‡½æ•°äº§ç”Ÿä¸€ä¸ªæ–°çš„åˆå¹¶åçš„å‡½æ•° : ', arr.concat(arr2).length == 11 && arr.length == 9, 2);
+        expect('è½¬åŒ–ä¸ºå­—ç¬¦ä¸² ï¼Œè°ƒç”¨ join å°†æ•°ç»„ä¸­çš„å…ƒç´ ä»¥åˆ†éš”ç¬¦åˆå¹¶ä¸ºä¸€ä¸ªå­—ç¬¦ä¸² ', arr2.join(":") === "10:11", 3);
+        expect('pop å¼¹å‡º', arr.pop() && arr.length == 8, 4);
 
         var arr = [1, 2, 3];
         arr.forEach(function (i) {
@@ -261,42 +261,42 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
 
         var arr = [1, 2, 3];
         arr.reverse();
-        expect('revserse µ¹×ªÊı×éÔªËØ', arr.length == 3 && arr[0] === 3 && arr[1] === 2 && arr[2] === 1, 6);
-        expect('shift µ¯³öÊı×éµÄµÚÒ»¸öÔªËØ', arr.shift() == 3 && arr.length == 2 && arr[0] === 2 && arr[1] === 1, 7);
+        expect('revserse å€’è½¬æ•°ç»„å…ƒç´ ', arr.length == 3 && arr[0] === 3 && arr[1] === 2 && arr[2] === 1, 6);
+        expect('shift å¼¹å‡ºæ•°ç»„çš„ç¬¬ä¸€ä¸ªå…ƒç´ ', arr.shift() == 3 && arr.length == 2 && arr[0] === 2 && arr[1] === 1, 7);
 
         var arr = [1, 2, 3];
         arr.unshift(4);
-        expect('unshift Ìí¼ÓĞÂÔªËØµ½Êı×éÍ·²¿', arr.length == 4 && arr[0] === 4 && arr[1] === 1, 8);
+        expect('unshift æ·»åŠ æ–°å…ƒç´ åˆ°æ•°ç»„å¤´éƒ¨', arr.length == 4 && arr[0] === 4 && arr[1] === 1, 8);
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         var arrsub = arr.slice(3, 6);
         var arract = [9, 8, 7];
-        expect('slice ·µ»ØÊı×éÖ¸¶¨Ë÷ÒıÎª3µ½5µÄ×Ö·û£¬Ë÷Òı´Ó0¿ªÊ¼', arrsub.length == 3 && arract.toString() == arrsub.toString(), 9);
+        expect('slice è¿”å›æ•°ç»„æŒ‡å®šç´¢å¼•ä¸º3åˆ°5çš„å­—ç¬¦ï¼Œç´¢å¼•ä»0å¼€å§‹', arrsub.length == 3 && arract.toString() == arrsub.toString(), 9);
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         var arrreplace = arr.splice(2, 4, 1, 1, 1, 1);
         var arr1 = [3, 9, 8, 7]
         var arrexp = [1, 2, 1, 1, 1, 1, 6, 5, 4];
-        expect('splice Ö¸¶¨Ë÷Òı2ºóÃæµÄ4¸öÔªËØ±»1£¬1,1,1Ìæ´ú', arr.toString() == arrexp.toString() && arrreplace.toString() == arr1.toString(), 10);
+        expect('splice æŒ‡å®šç´¢å¼•2åé¢çš„4ä¸ªå…ƒç´ è¢«1ï¼Œ1,1,1æ›¿ä»£', arr.toString() == arrexp.toString() && arrreplace.toString() == arr1.toString(), 10);
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         arr.sort();
         var arrupexp = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        expect('sort ÉıĞòÅÅĞò', arr.toString() == arrupexp.toString(), 11)
+        expect('sort å‡åºæ’åº', arr.toString() == arrupexp.toString(), 11)
         arr.sort(function (a, b) {
             return b - a;
         });
         var arrdownexp = [9, 8, 7, 6, 5, 4, 3, 2, 1];
-        expect('sort ½µĞòÅÅĞò', arr.toString() == arrdownexp.toString(), 12);
+        expect('sort é™åºæ’åº', arr.toString() == arrdownexp.toString(), 12);
 
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         var dex = arr.indexOf(4)
-        expect('index ÕÒµ½ÖµÎª²ÎÊıµÄË÷Òı', dex == 8, 13);
+        expect('index æ‰¾åˆ°å€¼ä¸ºå‚æ•°çš„ç´¢å¼•', dex == 8, 13);
 
         var arr = [4, 6, 7, 8, 2, 66, 34, 7, 534, 34, 6, 8];
         var lastdex = arr.lastIndexOf(4);
-        expect('lastIndexOf ÕÒµ½¸ÃÖµ×îºó³öÏÖµÄË÷ÒıÎ»ÖÃ', lastdex == 0, 14);
+        expect('lastIndexOf æ‰¾åˆ°è¯¥å€¼æœ€åå‡ºç°çš„ç´¢å¼•ä½ç½®', lastdex == 0, 14);
 
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
@@ -306,7 +306,7 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
                 return false;
             }
         });
-        expect('every Ö»ÒªÓĞÒ»¸öÔªËØµ÷ÓÃfunction·µ»ØfalseÔòevery·µ»Øfalse', flag1 == false, 15);
+        expect('every åªè¦æœ‰ä¸€ä¸ªå…ƒç´ è°ƒç”¨functionè¿”å›falseåˆ™everyè¿”å›false', flag1 == false, 15);
 
 
         var flag2 = arr.every(function (a) {
@@ -314,7 +314,7 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
                 return true;
             }
         });
-        expect('every Ã¿¸öÔªËØµ÷ÓÃfunction·µ»ØtrueÔòevery·µ»Øtrue', flag2 == true, 16);
+        expect('every æ¯ä¸ªå…ƒç´ è°ƒç”¨functionè¿”å›trueåˆ™everyè¿”å›true', flag2 == true, 16);
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         var flag1 = arr.some(function (a) {
@@ -322,7 +322,7 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
                 return true;
             }
         });
-        expect('some Ö»ÒªÓĞÒ»¸öÔªËØµ÷ÓÃfunction·µ»ØtureÔòsome·µ»Øtrue', flag1 == true, 17);
+        expect('some åªè¦æœ‰ä¸€ä¸ªå…ƒç´ è°ƒç”¨functionè¿”å›tureåˆ™someè¿”å›true', flag1 == true, 17);
 
 
         var flag2 = arr.some(function (a) {
@@ -330,7 +330,7 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
                 return false;
             }
         });
-        expect('some ËùÓĞÔªËØµ÷ÓÃfuntion·µ»ØfalseÔòsome·µ»Øflase', flag2 == false, 18);
+        expect('some æ‰€æœ‰å…ƒç´ è°ƒç”¨funtionè¿”å›falseåˆ™someè¿”å›flase', flag2 == false, 18);
 
         var arr = [1, 2, 3, 9, 8, 7, 6, 5, 4];
         var arrfilter = arr.filter(function (a) {
@@ -338,7 +338,7 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
                 return true;
             }
         });
-        expect('filter ·µ»Øfunction·µ»ØÖµÎªtrueµÄÔªËØ', arrfilter.length == 8 && arrfilter[0] === 2, 19);
+        expect('filter è¿”å›functionè¿”å›å€¼ä¸ºtrueçš„å…ƒç´ ', arrfilter.length == 8 && arrfilter[0] === 2, 19);
 
         var arr = [1, 2, 3];
         var empty = [];
@@ -348,38 +348,38 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
         expect('arr map', empty[0] === 1 && arr[2] === 3, 20);
     });
 
-    it("kissy all ·½·¨Ïà¹Ø£ºÁ´Ê½ÓÃ·¨", function () {
+    it("kissy all æ–¹æ³•ç›¸å…³ï¼šé“¾å¼ç”¨æ³•", function () {
         var S = KISSY;
 
         var obj = S.all('a');
         console.log(obj);
-        expect('KISSY.all »ñµÃÒ»¸ö¶ÔÏó', typeof obj == "object", 1);
+        expect('KISSY.all è·å¾—ä¸€ä¸ªå¯¹è±¡', typeof obj == "object", 1);
 
-        expect('KISSY.all length »ñÈ¡³¤¶È£¬×¢Òâ£¬ÕâÀïÊÇº¯Êı', S.all('.dom-father').len() === 1, 1)
+        expect('KISSY.all length è·å–é•¿åº¦ï¼Œæ³¨æ„ï¼Œè¿™é‡Œæ˜¯å‡½æ•°', S.all('.dom-father').len() === 1, 1)
 
-        expect('KISSY.all equals ±È½Ïµ±Ç°½ÚµãÁĞ±íºÍ others ´ú±íµÄ½ÚµãÁĞ±íÊÇ·ñÍêÈ«ÏàÍ¬', S.all('a').equals(S.all('a')), 1);
+        expect('KISSY.all equals æ¯”è¾ƒå½“å‰èŠ‚ç‚¹åˆ—è¡¨å’Œ others ä»£è¡¨çš„èŠ‚ç‚¹åˆ—è¡¨æ˜¯å¦å®Œå…¨ç›¸åŒ', S.all('a').equals(S.all('a')), 1);
 
-        expect('KISSY.all hasClass ÊÇ·ñ°üº¬Ö¸¶¨class', S.all('.dom-father').hasClass('.dom-father'), 1);
+        expect('KISSY.all hasClass æ˜¯å¦åŒ…å«æŒ‡å®šclass', S.all('.dom-father').hasClass('.dom-father'), 1);
 
-        expect('KISSY.all addClass Ìí¼Óclass', S.all('.dom-father').addClass('bbb').hasClass('bbb'), 1);
+        expect('KISSY.all addClass æ·»åŠ class', S.all('.dom-father').addClass('bbb').hasClass('bbb'), 1);
 
-        expect('KISSY.all removeClass ÒÆ³ıclass', !S.all('.dom-father').addClass('bbb').removeClass('bbb').hasClass('bbb'), 1);
+        expect('KISSY.all removeClass ç§»é™¤class', !S.all('.dom-father').addClass('bbb').removeClass('bbb').hasClass('bbb'), 1);
 
-        expect('KISSY.all toggleClass ÇĞ»»class', !S.all('.dom-father').addClass('bbb').toggleClass('bbb').hasClass('bbb'), 1);
+        expect('KISSY.all toggleClass åˆ‡æ¢class', !S.all('.dom-father').addClass('bbb').toggleClass('bbb').hasClass('bbb'), 1);
 
-        expect('KISSY.all replaceClass ÇĞ»»class', S.all('.dom-father').addClass('bbb').replaceClass('bbb', 'aaa').hasClass('aaa') && !S.all('.dom-father').hasClass('bbb'), 1);
+        expect('KISSY.all replaceClass åˆ‡æ¢class', S.all('.dom-father').addClass('bbb').replaceClass('bbb', 'aaa').hasClass('aaa') && !S.all('.dom-father').hasClass('bbb'), 1);
 
-        expect('KISSY.all add·½·¨Ôö¼ÓµÄÔªËØ±ØĞëÊÇcajaÈİÆ÷ÄÚµÄÔªËØ', S.all('.row').getDOMNodes().length === 0, 1);
+        expect('KISSY.all addæ–¹æ³•å¢åŠ çš„å…ƒç´ å¿…é¡»æ˜¯cajaå®¹å™¨å†…çš„å…ƒç´ ', S.all('.row').getDOMNodes().length === 0, 1);
 
 
-        expect('KISSY.all slice »ñÈ¡°üº¬µ±Ç°½ÚµãÁĞ±íÑ¡¶¨·¶Î§ÄÚÔ­Éú½ÚµãµÄĞÂ NodeList ¶ÔÏó',
+        expect('KISSY.all slice è·å–åŒ…å«å½“å‰èŠ‚ç‚¹åˆ—è¡¨é€‰å®šèŒƒå›´å†…åŸç”ŸèŠ‚ç‚¹çš„æ–° NodeList å¯¹è±¡',
             S.all('.dom-child1').add('.dom-child2').slice(1, 2).equals(S.all('.dom-child2')), 1);
 
 
-        expect('KISSY.all end µÃµ½ÉÏÒ»´Î NodeList.prototype.one() / NodeList.prototype.all() ²Ù×÷Ç°µÄ NodeList ¶ÔÏó',
+        expect('KISSY.all end å¾—åˆ°ä¸Šä¸€æ¬¡ NodeList.prototype.one() / NodeList.prototype.all() æ“ä½œå‰çš„ NodeList å¯¹è±¡',
             S.all('.dom-child1').all('.dom-child2').end().equals(S.all('.dom-child1')), 1);
 
-        expect('KISSY.all addºÍitem ·µ»Ø°üº¬ºÏ²¢Ñ¡ÔñÆ÷×Ö·û´®Æ¥ÅäµÄÔªËØºÍµ±Ç°½ÚµãÁĞ±íÔªËØµÄĞÂ NodeList ¶ÔÏó£¬ item»ñÈ¡µÚindex¸öNodeList¶ÔÏó', S.all('.dom-child1').add('.dom-child2').item(1).hasClass('dom-child2'), 1);
+        expect('KISSY.all addå’Œitem è¿”å›åŒ…å«åˆå¹¶é€‰æ‹©å™¨å­—ç¬¦ä¸²åŒ¹é…çš„å…ƒç´ å’Œå½“å‰èŠ‚ç‚¹åˆ—è¡¨å…ƒç´ çš„æ–° NodeList å¯¹è±¡ï¼Œ itemè·å–ç¬¬indexä¸ªNodeListå¯¹è±¡', S.all('.dom-child1').add('.dom-child2').item(1).hasClass('dom-child2'), 1);
 
         expect('KISSY.all scrollTop ', typeof S.all('.dom-child1').scrollTop() === "number", 1);
         expect('KISSY.all scrollLeft' + S.all('.dom-child1').scrollLeft(), typeof S.all('.dom-child1').scrollLeft() === "number", 1);
@@ -387,13 +387,13 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
         expect('KISSY.all height ' + S.all('.dom-father').height(), typeof S.all('.dom-father').height() === "number", 1);
         expect('KISSY.all width' + S.all('.dom-father').width(), typeof S.all('.dom-father').width() === "number", 1);
 
-        expect('KISSY.all appendTo/parent/children/item ½«µ±Ç°½ÚµãÁĞ±íÖĞµÄÃ¿¸öÔªËØ²åÈëµ½ÈİÆ÷ÁĞ±íµÄÃ¿¸öÔªËØµÄ×îºóÒ»¸ö×Ó½ÚµãºóÃæ.',
+        expect('KISSY.all appendTo/parent/children/item å°†å½“å‰èŠ‚ç‚¹åˆ—è¡¨ä¸­çš„æ¯ä¸ªå…ƒç´ æ’å…¥åˆ°å®¹å™¨åˆ—è¡¨çš„æ¯ä¸ªå…ƒç´ çš„æœ€åä¸€ä¸ªå­èŠ‚ç‚¹åé¢.',
             S.all('.dom-child1').appendTo(S.all('.dom-father')).parent().children().item(0).hasClass("dom-child2"), 1);
 
-        expect('KISSY.all prependTo ½«µ±Ç°½ÚµãÁĞ±íÖĞµÄÃ¿¸öÔªËØ²åÈëµ½ÈİÆ÷ÁĞ±íµÄÃ¿¸öÔªËØµÄ¿ªÍ·.', S.all('.dom-child1').prependTo(S.all('.dom-father')).parent().children().item(0).hasClass("dom-child1"), 1);
+        expect('KISSY.all prependTo å°†å½“å‰èŠ‚ç‚¹åˆ—è¡¨ä¸­çš„æ¯ä¸ªå…ƒç´ æ’å…¥åˆ°å®¹å™¨åˆ—è¡¨çš„æ¯ä¸ªå…ƒç´ çš„å¼€å¤´.', S.all('.dom-child1').prependTo(S.all('.dom-father')).parent().children().item(0).hasClass("dom-child1"), 1);
 
 //        S.all('.dom-child1').insertBefore(S.all('.dom-child2'));
-//        expect('KISSY.all insertBefore ½«µ±Ç°½ÚµãÁĞ±íÖĞµÄÃ¿¸öÔªËØ²åÈëµ½ÈİÆ÷ÁĞ±íµÄÃ¿¸öÔªËØµÄ¿ªÍ·.', S.all('.dom-father').children().item(0).hasClass('dom-child1'), 1);
+//        expect('KISSY.all insertBefore å°†å½“å‰èŠ‚ç‚¹åˆ—è¡¨ä¸­çš„æ¯ä¸ªå…ƒç´ æ’å…¥åˆ°å®¹å™¨åˆ—è¡¨çš„æ¯ä¸ªå…ƒç´ çš„å¼€å¤´.', S.all('.dom-father').children().item(0).hasClass('dom-child1'), 1);
 
         S.all('.dom-father').show(5).hide(5).toggle(5).fadeIn().fadeOut().fadeToggle().slideDown().slideUp().slideToggle();
 
@@ -401,16 +401,16 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
         expect('KISSY.all hide .', true, 1);
         expect('KISSY.all toggle .', true, 1);
 
-        expect('KISSY.all filter »ñÈ¡·ûºÏÑ¡ÔñÆ÷ÒÔ¼°¹ıÂË²ÎÊıµÄËùÓĞÔªËØ.', S.all('.dom-father').children().filter('.dom-child2').equals(S.all('.dom-child2')), 1);
+        expect('KISSY.all filter è·å–ç¬¦åˆé€‰æ‹©å™¨ä»¥åŠè¿‡æ»¤å‚æ•°çš„æ‰€æœ‰å…ƒç´ .', S.all('.dom-father').children().filter('.dom-child2').equals(S.all('.dom-child2')), 1);
 
 
-        expect('KISSY.all test ÅĞ¶Ï¸ù¾İÑ¡ÔñÆ÷»ñÈ¡µÄËùÓĞÔªËØÊÇ·ñ¶¼·ûºÏ¹ıÂËÌõ¼ş.', S.all('.dom-father').children().test('div'), 1);
+        expect('KISSY.all test åˆ¤æ–­æ ¹æ®é€‰æ‹©å™¨è·å–çš„æ‰€æœ‰å…ƒç´ æ˜¯å¦éƒ½ç¬¦åˆè¿‡æ»¤æ¡ä»¶.', S.all('.dom-father').children().test('div'), 1);
 
         S.all('.dom-child1').clone().insertBefore(S.all('.dom-child2'));
-        expect('KISSY.all clone »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄ¿ËÂ¡ÔªËØ.', S.all('.dom-father').children().item(1).hasClass('dom-child1'), 1);
+        expect('KISSY.all clone è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„å…‹éš†å…ƒç´ .', S.all('.dom-father').children().item(1).hasClass('dom-child1'), 1);
 
         S.all('.dom-child1').item(0).remove();
-        expect('KISSY.all remove ½«·ûºÏÑ¡ÔñÆ÷µÄËùÓĞÔªËØ´Ó DOM ÖĞÒÆ³ı.', S.all('.dom-father').children().item(1).hasClass('dom-child2'), 1);
+        expect('KISSY.all remove å°†ç¬¦åˆé€‰æ‹©å™¨çš„æ‰€æœ‰å…ƒç´ ä» DOM ä¸­ç§»é™¤.', S.all('.dom-father').children().item(1).hasClass('dom-child2'), 1);
 
         var div = document.createElement('div');
         div.innerHTML = "<a class='a'>a</a><a class='b'>b</a>";
@@ -418,14 +418,14 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
         S.all(div).appendTo(S.all('.dom-father'));
 
 
-        expect('KISSY.all empty Çå³ı½ÚµãµÄËùÓĞ×ÓËï½ÚµãÒÔ¼°×ÓËï½ÚµãÉÏµÄÊÂ¼ş', S.all('.dom-father').children().item(2).hasClass('dom-child3'), 1);
+        expect('KISSY.all empty æ¸…é™¤èŠ‚ç‚¹çš„æ‰€æœ‰å­å­™èŠ‚ç‚¹ä»¥åŠå­å­™èŠ‚ç‚¹ä¸Šçš„äº‹ä»¶', S.all('.dom-father').children().item(2).hasClass('dom-child3'), 1);
         S.all('.dom-father').children().item(2).empty();
-        expect('KISSY.all empty Çå³ı½ÚµãµÄËùÓĞ×ÓËï½ÚµãÒÔ¼°×ÓËï½ÚµãÉÏµÄÊÂ¼ş', document.getElementsByClassName('dom-child3')[0].innerHTML === '', 1);
+        expect('KISSY.all empty æ¸…é™¤èŠ‚ç‚¹çš„æ‰€æœ‰å­å­™èŠ‚ç‚¹ä»¥åŠå­å­™èŠ‚ç‚¹ä¸Šçš„äº‹ä»¶', document.getElementsByClassName('dom-child3')[0].innerHTML === '', 1);
         S.all('.dom-child3').remove();
 
         div = document.createElement("a");
         div.className = 'temp';
-        expect('KISSY.all replaceWith ½« node ½Úµã£¨Êı×é£©Ìæ»»ÎªĞÂµÄ½Úµã£¨Êı×é£© newNode',
+        expect('KISSY.all replaceWith å°† node èŠ‚ç‚¹ï¼ˆæ•°ç»„ï¼‰æ›¿æ¢ä¸ºæ–°çš„èŠ‚ç‚¹ï¼ˆæ•°ç»„ï¼‰ newNode',
             S.all('.dom-child1').replaceWith(div) && S.all('.temp').hasClass('temp'), 1);
 
         div = document.createElement("div");
@@ -435,24 +435,24 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
         S.all('.temp').remove();
 
 
-        expect('KISSY.all offset »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØÏà¶ÔÒ³ÃæÎÄµµ×óÉÏ½ÇµÄÆ«ÒÆÖµ', typeof S.all('.dom-father').offset().top, 1);
-        expect('KISSY.all offset »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØÏà¶ÔÒ³ÃæÎÄµµ×óÉÏ½ÇµÄÆ«ÒÆÖµ', typeof S.all('.dom-father').offset().left, 1);
+        expect('KISSY.all offset è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ ç›¸å¯¹é¡µé¢æ–‡æ¡£å·¦ä¸Šè§’çš„åç§»å€¼', typeof S.all('.dom-father').offset().top, 1);
+        expect('KISSY.all offset è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ ç›¸å¯¹é¡µé¢æ–‡æ¡£å·¦ä¸Šè§’çš„åç§»å€¼', typeof S.all('.dom-father').offset().left, 1);
 
-        expect('KISSY.all next »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄÏÂÒ»¸öÍ¬¼¶½Úµã', S.all('.dom-child2').next().equals(S.all('.dom-child1')), 1)
-        expect('KISSY.all prev »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄÉÏÒ»¸öÍ¬¼¶½Úµã', S.all('.dom-child1 ').prev().equals(S.all('.dom-child2')), 1)
+        expect('KISSY.all next è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„ä¸‹ä¸€ä¸ªåŒçº§èŠ‚ç‚¹', S.all('.dom-child2').next().equals(S.all('.dom-child1')), 1)
+        expect('KISSY.all prev è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„ä¸Šä¸€ä¸ªåŒçº§èŠ‚ç‚¹', S.all('.dom-child1 ').prev().equals(S.all('.dom-child2')), 1)
 
-        expect('KISSY.all first »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öº¢×Ó½Úµã', S.all('.dom-father').first().equals(S.all('.dom-child2')), 1)
+        expect('KISSY.all first è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå­©å­èŠ‚ç‚¹', S.all('.dom-father').first().equals(S.all('.dom-child2')), 1)
 
-        expect('KISSY.all last »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄ×îºóÒ»¸öº¢×Ó½Úµã', S.all('.dom-father').last().equals(S.all('.dom-child1')), 1)
+        expect('KISSY.all last è·å–ç¬¦åˆé€‰æ‹©å™¨çš„æœ€åä¸€ä¸ªå­©å­èŠ‚ç‚¹', S.all('.dom-father').last().equals(S.all('.dom-child1')), 1)
 
-        expect('KISSY.all siblings »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄÏàÓ¦Í¬¼¶½Úµã.', S.all('.dom-father').children().item(0).add(S.all('.dom-father').children().item(0).siblings()).equals(S.all('.dom-father').children()), 1)
+        expect('KISSY.all siblings è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„ç›¸åº”åŒçº§èŠ‚ç‚¹.', S.all('.dom-father').children().item(0).add(S.all('.dom-father').children().item(0).siblings()).equals(S.all('.dom-father').children()), 1)
 
-        expect('KISSY.all contains ÅĞ¶ÏÄ³Ò»ÈİÆ÷(container)ÊÇ·ñ°üº¬ÁíÒ»(contained)½Úµã', S.all('.dom-father').contains(S.all('.dom-child1')), 1)
+        expect('KISSY.all contains åˆ¤æ–­æŸä¸€å®¹å™¨(container)æ˜¯å¦åŒ…å«å¦ä¸€(contained)èŠ‚ç‚¹', S.all('.dom-father').contains(S.all('.dom-child1')), 1)
 
-        expect('KISSY.all innerWidth »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄ¿í¶ÈÖµ, ×¢Òâ: ¸ÃÖµ°üº¬ padding .', typeof S.all('.dom-father').innerWidth() === 'number', 1)
-        expect('KISSY.all innerHeight »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄ¸ß¶ÈÖµ, ×¢Òâ: ¸ÃÖµ°üº¬ padding . .', typeof S.all('.dom-father').innerHeight() === 'number', 1)
-        expect('KISSY.all outerWidth »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄ¿í¶ÈÖµ, ×¢Òâ: ¸ÃÖµ³ıÁË°üº¬ÔªËØ±¾Éí¿í¶ÈºÍ padding Íâ, »¹°üº¬ border»òmargin .', typeof S.all('.dom-father').outerWidth() === 'number', 1)
-        expect('KISSY.all outerHeight »ñÈ¡·ûºÏÑ¡ÔñÆ÷µÄµÚÒ»¸öÔªËØµÄ¸ß¶ÈÖµ, ×¢Òâ: ¸ÃÖµ³ıÁË°üº¬ÔªËØ±¾Éí¿í¶ÈºÍ padding Íâ, »¹°üº¬ border»òmargin .', typeof S.all('.dom-father').outerHeight() === 'number', 1)
+        expect('KISSY.all innerWidth è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„å®½åº¦å€¼, æ³¨æ„: è¯¥å€¼åŒ…å« padding .', typeof S.all('.dom-father').innerWidth() === 'number', 1)
+        expect('KISSY.all innerHeight è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„é«˜åº¦å€¼, æ³¨æ„: è¯¥å€¼åŒ…å« padding . .', typeof S.all('.dom-father').innerHeight() === 'number', 1)
+        expect('KISSY.all outerWidth è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„å®½åº¦å€¼, æ³¨æ„: è¯¥å€¼é™¤äº†åŒ…å«å…ƒç´ æœ¬èº«å®½åº¦å’Œ padding å¤–, è¿˜åŒ…å« borderæˆ–margin .', typeof S.all('.dom-father').outerWidth() === 'number', 1)
+        expect('KISSY.all outerHeight è·å–ç¬¦åˆé€‰æ‹©å™¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„é«˜åº¦å€¼, æ³¨æ„: è¯¥å€¼é™¤äº†åŒ…å«å…ƒç´ æœ¬èº«å®½åº¦å’Œ padding å¤–, è¿˜åŒ…å« borderæˆ–margin .', typeof S.all('.dom-father').outerHeight() === 'number', 1)
 
 
         var an = S.all('.dom-child2').animate({"top": 100});
@@ -469,30 +469,30 @@ describe('»ù±¾µÄÓïÑÔ²âÊÔ', function () {
         });
         S.all('.dom-child1').fire('click');
 
-        expect('KISSY.all fire jsÊÖ¶¯´¥·¢ÊÂ¼ş', S.all('.dom-child1').getDOMNodes()[0].innerHTML === "fffffff", 1);
+        expect('KISSY.all fire jsæ‰‹åŠ¨è§¦å‘äº‹ä»¶', S.all('.dom-child1').getDOMNodes()[0].innerHTML === "fffffff", 1);
 
-        expect('KISSY.all scrollIntoView Ä¿²âokÁË', true, 1);
+        expect('KISSY.all scrollIntoView ç›®æµ‹okäº†', true, 1);
 
         S.all('.inputcls').on('click',function (e) {
-            expect("kissy.al on fire ¿ÉÒÔ»ñÈ¡ÕùÈ¡µÄÖµ e.target.value", e.target.value === 'landao');
-            expect("kissy.al on fire ¿ÉÒÔ»ñÈ¡ÕùÈ¡µÄÖµ this.value", this.value === 'landao');
-            expect("kissy.al on fire ¿ÉÒÔ»ñÈ¡ÕùÈ¡µÄÖµ S.all(this).val()", S.all(this).val() === 'landao');
+            expect("kissy.al on fire å¯ä»¥è·å–äº‰å–çš„å€¼ e.target.value", e.target.value === 'landao');
+            expect("kissy.al on fire å¯ä»¥è·å–äº‰å–çš„å€¼ this.value", this.value === 'landao');
+            expect("kissy.al on fire å¯ä»¥è·å–äº‰å–çš„å€¼ S.all(this).val()", S.all(this).val() === 'landao');
 
         }).fire('click');
 
     });
 
-    it('S.all ·½·¨Á´Ê½Ğ´·¨µÄ°²È«ĞÔĞ£Ñé', function () {
+    it('S.all æ–¹æ³•é“¾å¼å†™æ³•çš„å®‰å…¨æ€§æ ¡éªŒ', function () {
 
         var S = KISSY;
 
-        expect('KISSY.all add·½·¨Ôö¼ÓµÄÔªËØ±ØĞëÊÇcajaÈİÆ÷ÄÚµÄÔªËØ', S.all('.dom-child1').add('.row').getDOMNodes().length === 1, 1);
-        expect('KISSY.all prependTo/appendTo ·½·¨Ôö¼ÓµÄÔªËØ±ØĞëÊÇcajaÈİÆ÷ÄÚµÄÔªËØ', S.all('.dom-child1').add('.row').getDOMNodes().length === 1, 1);
+        expect('KISSY.all addæ–¹æ³•å¢åŠ çš„å…ƒç´ å¿…é¡»æ˜¯cajaå®¹å™¨å†…çš„å…ƒç´ ', S.all('.dom-child1').add('.row').getDOMNodes().length === 1, 1);
+        expect('KISSY.all prependTo/appendTo æ–¹æ³•å¢åŠ çš„å…ƒç´ å¿…é¡»æ˜¯cajaå®¹å™¨å†…çš„å…ƒç´ ', S.all('.dom-child1').add('.row').getDOMNodes().length === 1, 1);
 
 
         var el = S.all('.dom-child1').parent(5);
 
-        expect('KISSY.all parent²»¿ÉÒÔ»ñÈ¡µ½³¬¹ıÈİÆ÷ÍâµÄÔªËØ', el.getDOMNodes()[0].className==="J_TScriptedModule" );
+        expect('KISSY.all parentä¸å¯ä»¥è·å–åˆ°è¶…è¿‡å®¹å™¨å¤–çš„å…ƒç´ ', el.getDOMNodes()[0].className==="J_TScriptedModule" );
 
         setTimeout(function () {
             S.all('.rep-father').scrollIntoView();

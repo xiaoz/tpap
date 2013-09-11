@@ -59,7 +59,7 @@
     /**
      * Collect all the scripted modules and run them with corresponding cajoled JavaScript code
      * @param {Object} frameGroup frameGroup in caja environment
-     * @param {Object} ËùÓĞµÄ×é¼şadapter ¹¹ÔìÆ÷
+     * @param {Object} æ‰€æœ‰çš„ç»„ä»¶adapter æ„é€ å™¨
      */
     Balcony.runScriptedMods = function (frameGroup, adapterArray) {
         var DOM = KISSY.DOM;
@@ -93,7 +93,7 @@
                     S.log(message, source, lineNum);
                     return true;
                 }));
-                //Îªiframe É³Ïä»·¾³±êÊ¾³öÄ£¿éµÄÔ­ĞÍid, ½«Ä£¿éµÄÔ­ĞÍid,·ÅÔÚiframeÖĞ£¬ºóÃæ»ñÈ¡Êı¾İµÄÊ±ºò·½±ã»ñÈ¡
+                //ä¸ºiframe æ²™ç®±ç¯å¢ƒæ ‡ç¤ºå‡ºæ¨¡å—çš„åŸå‹id, å°†æ¨¡å—çš„åŸå‹id,æ”¾åœ¨iframeä¸­ï¼Œåé¢è·å–æ•°æ®çš„æ—¶å€™æ–¹ä¾¿è·å–
                 DOM.attr(frame.iframe, 'data-modulename', DOM.attr(frame.div, 'data-componentid'));
 
                 var exposed_kissy = {};
@@ -118,14 +118,14 @@
                     KISSY: frameGroup.tame(exposed_kissy),
                     onerror: onerror
                 };
-                coreObj = S.mix(extraExposed, coreObj);//mix Íâ²¿Exposed
-                coreObj = S.mix(coreObj, third_party);//mix µÚÈı·½
+                coreObj = S.mix(extraExposed, coreObj);//mix å¤–éƒ¨Exposed
+                coreObj = S.mix(coreObj, third_party);//mix ç¬¬ä¸‰æ–¹
 
 
                 prepareEnv.run(coreObj, function (re, a) {
                 });
-                //·¢ËÍ¼à¿ØÈÕÖ¾-jsÖ´ĞĞÊ±¼ä
-                //shop_log.sendJsMonitor(1, "Éè¼ÆÊ¦Ä£¿éjs±»±àÒëºóµÄÖ´ĞĞÊ±¼ä", prototypeId, +new Date() - start_time);
+                //å‘é€ç›‘æ§æ—¥å¿—-jsæ‰§è¡Œæ—¶é—´
+                //shop_log.sendJsMonitor(1, "è®¾è®¡å¸ˆæ¨¡å—jsè¢«ç¼–è¯‘åçš„æ‰§è¡Œæ—¶é—´", prototypeId, +new Date() - start_time);
 
             });
         });
@@ -154,11 +154,11 @@
     };
 
     /**
-     * @author Ê¯°Ô
-     * ÏòÇ°¼æÈİ
-     * ´Ë´¦±ØĞëÉùÃ÷TShop±äÁ¿, ÒòÎª·şÎñ¶Ë¶ÔÉè¼ÆÊ¦jsµÄ±àÒë£¬±»±àÒë³É "TShop.Balcony.registerMod(jscode)"
-     * ·şÎñ¶ËÄ¿Ç°×ö°æ±¾¿ØÖÆ½ÏÀ§ÄÑ£¬Ç°¶ËÏÈ×ö¼æÈİ
-     * ´Ë´¦ÎŞ·¨ĞŞ¸Ä£¬ÒòÎªÒªÏòÇ°¼æÈİ
+     * @author çŸ³éœ¸
+     * å‘å‰å…¼å®¹
+     * æ­¤å¤„å¿…é¡»å£°æ˜TShopå˜é‡, å› ä¸ºæœåŠ¡ç«¯å¯¹è®¾è®¡å¸ˆjsçš„ç¼–è¯‘ï¼Œè¢«ç¼–è¯‘æˆ "TShop.Balcony.registerMod(jscode)"
+     * æœåŠ¡ç«¯ç›®å‰åšç‰ˆæœ¬æ§åˆ¶è¾ƒå›°éš¾ï¼Œå‰ç«¯å…ˆåšå…¼å®¹
+     * æ­¤å¤„æ— æ³•ä¿®æ”¹ï¼Œå› ä¸ºè¦å‘å‰å…¼å®¹
      */
     if (!window['TShop']) {
         window['TShop'] = {};

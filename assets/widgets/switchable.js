@@ -11,8 +11,8 @@ KISSY.add('init-countdown-widgets', function(S){
 
     /**
      * count down core
-     * @param finish {Date | Number} ½áÊøÊ±¼ä|Ê£ÓàÊ±¼ä
-     * @param config {Object} ÅäÖÃÏî
+     * @param finish {Date | Number} ç»“æŸæ—¶é—´|å‰©ä½™æ—¶é—´
+     * @param config {Object} é…ç½®é¡¹
      */
     function Core(finish,config){
         var self = this;
@@ -31,7 +31,7 @@ KISSY.add('init-countdown-widgets', function(S){
 
     Core.prototype = {
 
-        // ¼ÆËãÊ±¼ä
+        // è®¡ç®—æ—¶é—´
         _countTime: function(finish){
             var self = this, cfg = self.config,
                 begin = cfg.timeBegin, end = 0;
@@ -192,7 +192,7 @@ KISSY.add('init-countdown-widgets', function(S){
     }
 
     /**
-     * È¡·şÎñÆ÷µ±Ç°Ê±¼ä
+     * å–æœåŠ¡å™¨å½“å‰æ—¶é—´
      * @param url
      * @param callback
      */
@@ -282,11 +282,11 @@ KISSY.use('switchable, init-countdown-widgets', function(S, Switchable, Countdow
         eachElem();
         function eachElem() {
             S.later(function () {
-                if (widgetElems.length !== 0) {//Êı×é»¹ÓĞÄ£¿éÒª½øĞĞ³õÊ¼»¯
+                if (widgetElems.length !== 0) {//æ•°ç»„è¿˜æœ‰æ¨¡å—è¦è¿›è¡Œåˆå§‹åŒ–
                     try {
-                        initEachWidget(widgetElems.shift()); //´ÓÊı×éÖĞÈ¡³öÒ»¸öÄ£¿é²¢½øĞĞ³õÊ¼»¯
+                        initEachWidget(widgetElems.shift()); //ä»æ•°ç»„ä¸­å–å‡ºä¸€ä¸ªæ¨¡å—å¹¶è¿›è¡Œåˆå§‹åŒ–
                     } catch (err) {
-                        S.log("³õÊ¼»¯×é¼ş³ö´í");
+                        S.log("åˆå§‹åŒ–ç»„ä»¶å‡ºé”™");
                     }
                     eachElem();
                 }
@@ -295,7 +295,7 @@ KISSY.use('switchable, init-countdown-widgets', function(S, Switchable, Countdow
 
         function initEachWidget(elem) {
             var type = elem.getAttribute('data-widget-type'), config;
-            //·Ö·¢³õÊ¼»¯×é¼ş
+            //åˆ†å‘åˆå§‹åŒ–ç»„ä»¶
             if (!type) {
                 return;
             }
@@ -312,7 +312,7 @@ KISSY.use('switchable, init-countdown-widgets', function(S, Switchable, Countdow
                         new Countdown(elem, config.endTime, config);
                         break;
                     default:
-                        S.log('ÔÚkissy¿âÖĞÃ»ÓĞ²éÕÒµ½ÄãÏëÒª³õÊ¼»¯µÄ×é¼ş');
+                        S.log('åœ¨kissyåº“ä¸­æ²¡æœ‰æŸ¥æ‰¾åˆ°ä½ æƒ³è¦åˆå§‹åŒ–çš„ç»„ä»¶');
                 }
             } catch (ex) {
                 S.log('widget ' + ex, 'warn');

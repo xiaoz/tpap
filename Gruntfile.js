@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                         {
                             name: 'openjs',
                             path: './assets',
-                            charset: 'gbk'
+                            charset: 'utf8'
                         }
                     ]
                 },

@@ -1,8 +1,8 @@
 /**
- * @fileOverview shop_log ¸ºÔğ´íÎóÊÕ¼¯
- *               Ä¿Ç°¸ºÔğ´¦ÀícajaµÄ´íÎóÊÕ¼¯
- *               Ö»ÔÚÏßÉÏ»·¾³»òÕß?caja-debugµÄÊ±ºò²Å·¢ËÍÈÕÖ¾
- * @author Ê¯°Ô shiba@taobao.com
+ * @fileOverview shop_log è´Ÿè´£é”™è¯¯æ”¶é›†
+ *               ç›®å‰è´Ÿè´£å¤„ç†cajaçš„é”™è¯¯æ”¶é›†
+ *               åªåœ¨çº¿ä¸Šç¯å¢ƒæˆ–è€…?caja-debugçš„æ—¶å€™æ‰å‘é€æ—¥å¿—
+ * @author çŸ³éœ¸ shiba@taobao.com
  * @depends window, KISSY
  * @type {Object}
  */
@@ -11,24 +11,24 @@ var shop_log = (function (win, S) {
     /**
      * goldlog.send(url, data)
      url {String} logurl eg, http://xx.com/1.gif
-     data {Object} (Optional) log obj to send   eg£º{a: 1, b:2, c:3, d: ¡°DDD¡±}¡£
+     data {Object} (Optional) log obj to send   egï¼š{a: 1, b:2, c:3, d: â€œDDDâ€}ã€‚
 
-     ÕâÊÇ×î»ù±¾µÄ·½·¨£¬µ÷ÓÃÕâ¸ö·½·¨£¬½Å±¾½«Ê¹ÓÃ new Image() µÄ·½·¨´´½¨Ò»¸öĞÂµÄÍ¼Æ¬£¬²¢½« data ÖĞµÄ key/value ²ÎÊıÆ´×°ÎªËÑË÷×Ö·û´®£¬Ìá½»Ò»¸ö GET ÇëÇó¡£
+     è¿™æ˜¯æœ€åŸºæœ¬çš„æ–¹æ³•ï¼Œè°ƒç”¨è¿™ä¸ªæ–¹æ³•ï¼Œè„šæœ¬å°†ä½¿ç”¨ new Image() çš„æ–¹æ³•åˆ›å»ºä¸€ä¸ªæ–°çš„å›¾ç‰‡ï¼Œå¹¶å°† data ä¸­çš„ key/value å‚æ•°æ‹¼è£…ä¸ºæœç´¢å­—ç¬¦ä¸²ï¼Œæäº¤ä¸€ä¸ª GET è¯·æ±‚ã€‚
      */
     var log_url = "http://log.mmstat.com/shopjserr.1.htm",
-        shop_data = win.shop_config || {}, //ä¯ÀÀÏµÍ³ÖĞÌá¹©µÄÈ«¾Ö±äÁ¿
+        shop_data = win.shop_config || {}, //æµè§ˆç³»ç»Ÿä¸­æä¾›çš„å…¨å±€å˜é‡
         shop_url = win.document.location.href;
     shop_data.template = shop_data.template || {};
 
-    //ÅĞ¶ÏÊÇ·ñÊÇÏßÉÏ»·¾³£¬¸ù¾İurl À´ÅĞ¶Ï £¬ÊÇ·ñÊÇ*.taobao.comÕâÖÖĞÎÊ½
+    //åˆ¤æ–­æ˜¯å¦æ˜¯çº¿ä¸Šç¯å¢ƒï¼Œæ ¹æ®url æ¥åˆ¤æ–­ ï¼Œæ˜¯å¦æ˜¯*.taobao.comè¿™ç§å½¢å¼
     var sendFlag = /.*(\.taobao\.com)$/.test(win.location.host) || win.location.search.indexOf("caja-debug") !== -1;
 
-    //×Ô¶¯Ö´ĞĞ£¬Âñµã»ñÈ¡Ò»Ğ©È«¾ÖÊı¾İ
+    //è‡ªåŠ¨æ‰§è¡Œï¼ŒåŸ‹ç‚¹è·å–ä¸€äº›å…¨å±€æ•°æ®
 
 
     /**
-     * ×¼±¸logÊı¾İ
-     * µêÆÌä¯ÀÀÏµÍ³È«¾Ö±äÁ¿shop_cifnigÖĞÌá¹©ÁË´ó²¿·ÖĞèÒªµÄĞÅÏ¢£¬ÈçÏÂ
+     * å‡†å¤‡logæ•°æ®
+     * åº—é“ºæµè§ˆç³»ç»Ÿå…¨å±€å˜é‡shop_cifnigä¸­æä¾›äº†å¤§éƒ¨åˆ†éœ€è¦çš„ä¿¡æ¯ï¼Œå¦‚ä¸‹
      *  var shop_config = {
      "shopId":"57299736",
      "siteId":"2",
@@ -64,10 +64,10 @@ var shop_log = (function (win, S) {
     }
 
     /**
-     * ¼à¿ØjsÖ´ĞĞÊ±¼ä
-     * @param type ¼à¿ØÀàĞÍ 1£º cajaºójs±¾ÉíµÄÖ´ĞĞÊ±¼ä
-     * @param desc ºÍtype¶ÔÓ¦µÄÎÄ×ÖÃèÊö
-     * @param prototypeid Ä£¿éÔ­ĞÍid
+     * ç›‘æ§jsæ‰§è¡Œæ—¶é—´
+     * @param type ç›‘æ§ç±»å‹ 1ï¼š cajaåjsæœ¬èº«çš„æ‰§è¡Œæ—¶é—´
+     * @param desc å’Œtypeå¯¹åº”çš„æ–‡å­—æè¿°
+     * @param prototypeid æ¨¡å—åŸå‹id
      * @param time_consume
      */
     function prepareMonitorData(type, desc, prototypeid, time_consume) {
@@ -89,7 +89,7 @@ var shop_log = (function (win, S) {
     }
 
     /**
-     * ·¢ËÍ±»²¶»ñµ½µÄ´íÎóµ½ÈÕÖ¾·şÎñÆ÷ÉÏ
+     * å‘é€è¢«æ•è·åˆ°çš„é”™è¯¯åˆ°æ—¥å¿—æœåŠ¡å™¨ä¸Š
      * @param msg
      * @param filename
      * @param errorline
@@ -104,9 +104,9 @@ var shop_log = (function (win, S) {
     }
 
     /**
-     * ·¢ËÍtaming iframe ÄÚ²¿µÄ´íÎóĞÅÏ¢µ½·şÎñÆ÷(async error)
-     * @param msg É³Ïä»·¾³µÄÒì³£ĞÅÏ¢
-     * @param iframe É³ÏäµÄiframe
+     * å‘é€taming iframe å†…éƒ¨çš„é”™è¯¯ä¿¡æ¯åˆ°æœåŠ¡å™¨(async error)
+     * @param msg æ²™ç®±ç¯å¢ƒçš„å¼‚å¸¸ä¿¡æ¯
+     * @param iframe æ²™ç®±çš„iframe
      */
     function sendTamingErrorLog(msg, iframe) {
         if (!sendFlag) {
@@ -117,7 +117,7 @@ var shop_log = (function (win, S) {
     }
 
     /**
-     * ·¢ËÍ´íÎó¼à¿ØÈÕÖ¾µ½ºó¶Ë
+     * å‘é€é”™è¯¯ç›‘æ§æ—¥å¿—åˆ°åç«¯
      * @param type
      * @param desc
      * @param prototypeid

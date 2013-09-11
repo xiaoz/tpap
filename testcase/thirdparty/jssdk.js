@@ -13,7 +13,7 @@ var access_token='';
 try{
     TOP.ui("authbtn", {
         container: '.taeapp_im_auth',
-        name:'ÊÚÈ¨',
+        name:'æˆæƒ',
         type:'mini',
         callback: function(data){
             log('auth back:'+KISSY.JSON.stringify(data));
@@ -28,7 +28,7 @@ console.log(g('taeapp_im_dox'));
 KISSY.Event.on(g('taeapp_im_dox'),'click',function(e){
     try{
         if(access_token==''){
-            log('ÇëÑ¡ÊÚÈ¨!');
+            log('è¯·é€‰æˆæƒ!');
         }else{
             log('call top taobao.favorite.add...');
             TOP.api('rest','get',{method:'taobao.favorite.add',session:access_token,item_numid:60497547,collect_type:'SHOP',shared:'true'},function(resp){
