@@ -3,44 +3,44 @@ caja-kissy
 
 kissy for caja, a third parth adapter.
 
-    caja 是google开发的安全技术框架 https://code.google.com/p/google-caja/
-    开放JS 是基于caja的修改版，更适合公司的应用。 框架 https://github.com/lorrylockie/caja
-    caja-kissy 是基于开放JS的一个适配器，让第三方可以在开放JS中安全的使用KISSY相关特性。是kissy的一个第三方安全策略方案。
-    目前项目中也有关于第三方适配的代码(阿里云和jssdk)
+    caja 锟斤拷google锟斤拷锟斤拷锟侥帮拷全锟斤拷锟斤拷锟斤拷锟斤拷 https://code.google.com/p/google-caja/
+    锟斤拷锟斤拷JS 锟角伙拷锟斤拷caja锟斤拷锟睫改版，锟斤拷锟绞合癸拷司锟斤拷应锟矫★拷 锟斤拷锟斤拷 https://github.com/lorrylockie/caja
+    caja-kissy 锟角伙拷锟节匡拷锟斤拷JS锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟矫碉拷锟斤拷锟斤拷锟斤拷锟斤拷锟节匡拷锟斤拷JS锟叫帮拷全锟斤拷使锟斤拷KISSY锟斤拷锟斤拷锟斤拷锟皆★拷锟斤拷kissy锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷全锟斤拷锟皆凤拷锟斤拷锟斤拷
+    目前锟斤拷目锟斤拷也锟叫癸拷锟节碉拷锟斤拷锟斤拷锟斤拷锟斤拷锟侥达拷锟斤拷(锟斤拷锟斤拷锟狡猴拷jssdk)
 
 
-目前caja-kissy和开放JS应用于淘宝的旺铺模板开发，淘宝U站，品牌中心，聚石塔等业务
+目前caja-kissy锟酵匡拷锟斤拷JS应锟斤拷锟斤拷锟皆憋拷锟斤拷锟斤拷锟斤拷模锟藉开锟斤拷锟斤拷锟皆憋拷U站锟斤拷品锟斤拷锟斤拷锟侥ｏ拷锟斤拷石锟斤拷锟斤拷业锟斤拷
 
 #### 一些知识
 https://github.com/lorrylockie/caja-kissy/issues
 
 
 
-#### 有问题
+#### 锟斤拷锟斤拷锟斤拷
 
-欢迎[提issue](https://github.com/lorrylockie/caja/issues/new)， 我会第一时间回复
+锟斤拷迎[锟斤拷issue](https://github.com/lorrylockie/caja/issues/new)锟斤拷 锟揭伙拷锟斤拷一时锟斤拷锟截革拷
 
 #### WIKI
 
-也欢迎你贡献 [wiki](https://github.com/lorrylockie/caja-kissy/wiki)
+也锟斤拷迎锟姐贡锟斤拷 [wiki](https://github.com/lorrylockie/caja-kissy/wiki)
 
 
-#### 目录结构说明
-* ``工程都是GBK编码``
-* assets 前端源代码
-* assets/base caja-kissy的一些基础环境工具
-* asssets/openjs caja-kissy的适配模块代码，代码中有详细的注释。适配过程中可以参考一些其他模块。模块的适配已经规范化
-* assets/widgets 一些公共的js服务。目前是switchable的根据html自动初始化组件
+#### 目录锟结构说锟斤拷
+* ``锟斤拷锟教讹拷锟斤拷GBK锟斤拷锟斤拷``
+* assets 前锟斤拷源锟斤拷锟斤拷
+* assets/base caja-kissy锟斤拷一些锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+* asssets/openjs caja-kissy锟斤拷锟斤拷锟斤拷模锟斤拷锟斤拷锟诫，锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷细锟斤拷注锟酵★拷锟斤拷锟斤拷锟斤拷锟斤拷锟叫匡拷锟皆参匡拷一些锟斤拷锟斤拷模锟介。模锟斤拷锟斤拷锟斤拷锟斤拷锟窖撅拷锟芥范锟斤拷
+* assets/widgets 一些锟斤拷锟斤拷锟斤拷js锟斤拷锟斤拷锟斤拷目前锟斤拷switchable锟侥革拷锟斤拷html锟皆讹拷锟斤拷始锟斤拷锟斤拷锟斤拷
 
-* testcase 测试用例编写目录
-* testcase/index.php 测试用例索引目录
-* testcase/README 如何编写测试用例说明
-* testcase common 为基础的页头页尾，每个测试用例需要引入common中的head和foot文件作为基础环境，并且调用cajoled_service.php 作为js的编译服务。
-* testcase 1.3.0/gallery/thirdparty 基本和assets/openjs 目录对应
-* test 测试代码库，目前里面只有一个js，提供一个很简单的类似于jasmine的api
+* testcase 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷写目录
+* testcase/index.php 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷目录
+* testcase/README 锟斤拷锟轿憋拷写锟斤拷锟斤拷锟斤拷锟斤拷说锟斤拷
+* testcase common 为锟斤拷锟斤拷锟斤拷页头页尾锟斤拷每锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷要锟斤拷锟斤拷common锟叫碉拷head锟斤拷foot锟侥硷拷锟斤拷为锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟揭碉拷锟斤拷cajoled_service.php 锟斤拷为js锟侥憋拷锟斤拷锟斤拷锟斤拷锟斤拷
+* testcase 1.3.0/gallery/thirdparty 锟斤拷锟斤拷锟斤拷assets/openjs 目录锟斤拷应
+* test 锟斤拷锟皆达拷锟斤拷锟解，目前锟斤拷锟斤拷只锟斤拷一锟斤拷js锟斤拷锟结供一锟斤拷锟杰简单碉拷锟斤拷锟斤拷锟斤拷jasmine锟斤拷api
 
-
-#### 代码运行
-* 将项目目录，放到php 服务器中，访问index.php
-* 编写完适配代码，`grunt`, 项目打包
+1
+#### 锟斤拷锟斤拷锟斤拷锟斤拷
+* 锟斤拷锟斤拷目目录锟斤拷锟脚碉拷php 锟斤拷锟斤拷锟斤拷锟叫ｏ拷锟斤拷锟斤拷index.php
+* 锟斤拷写锟斤拷锟斤拷锟斤拷锟斤拷锟诫，`grunt`, 锟斤拷目锟斤拷锟斤拷
 
