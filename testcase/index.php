@@ -9,6 +9,7 @@
 <ul>
     <li><a href="./1.3.0/baseapi.php">语言基本api和kissy基础模块</a></li>
     <li><a href="./1.3.0/calendar.php">日历</a></li>
+     <li><a href="./1.3.0/xtemplate.php">模板</a></li>
     <li><a href="./gallery/kcharts1.1.php">kcharts</a></li>
     <li><a href="./thirdparty/alimap.php">alimap</a></li>
     <li><a href="./thirdparty/jssdk.php">jssdk</a></li>
