@@ -19,7 +19,11 @@ KISSY.add(function (S) {
 
         function genWrapper() {
             function wrapper(data) {
-                data = cajaAFTB.untame(data)
+                data = cajaAFTB.untame(data);
+                if(typeof(data)=="function")
+                {
+                   frameGroup.markFunction(data);	
+                }
                 return wrapper.handle.call(this, data);
             }
             return wrapper;
@@ -78,9 +82,14 @@ KISSY.add(function (S) {
                         var param = S.makeArray(arguments);
                         if(param[0] == "authbtn"){
                             param[1] = cajaAFTB.untame(param[1]);
+                            //封装callback
                             var wrapper = genWrapper();
                             wrapper.handle = param[1].callback;
                             param[1].callback = wrapper;
+                            //封装onload
+                             var wrapper1 = genWrapper();
+                            wrapper1.handle = param[1].onload;
+                            param[1].onload = wrapper1;
                         }
                         return TOP.ui(param[0],param[1]);
                     })
